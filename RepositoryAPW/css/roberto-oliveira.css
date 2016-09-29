@@ -1,0 +1,17 @@
+﻿/*botão verde*/
+i.btn-floating.btn-medium.waves-effect.waves-light.green.material-icons.waves-input-wrapper {
+    border-radius: 20px;
+}
+/*botão vermelho*/
+i.btn-floating.btn-medium.waves-effect.waves-light.red.material-icons.waves-input-wrapper {
+    border-radius: 20px;
+}
+
+/*botão azul*/
+i.btn-floating.btn-medium.waves-effect.waves-light.blue.material-icons.waves-input-wrapper {
+    border-radius: 20px;
+}
+
+input[type="submit"] {
+    margin-bottom: 12px;
+}

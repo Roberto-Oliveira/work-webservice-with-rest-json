@@ -1,0 +1,39 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Mestre.master.cs" Inherits="RepositoryAPW.masters.Mestre" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link rel="icon" href="/images/favicon.ico" sizes="32x32" type="image/png" />
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link href="/css/bootstrap.css" rel="stylesheet" />
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="/css/materialize.min.css" media="screen,projection" />
+    <link href="/css/roberto-oliveira.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <asp:ScriptManager ID="tksmGeneric" runat="server" EnableScriptGlobalization="True"
+            EnableScriptLocalization="True" AsyncPostBackTimeout="12000">
+        </asp:ScriptManager>
+        <div class="container">
+            <asp:UpdatePanel ID="upGeneric" runat="server">
+                <ContentTemplate>
+                    <div id="divMensagem" runat="server">
+                    </div>
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                </ContentTemplate>
+            </asp:UpdatePanel>
+        </div>
+    </form>
+
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="/js/materialize.min.js"></script>
+</body>
+</html>

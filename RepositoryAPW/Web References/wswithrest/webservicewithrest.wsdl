@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="roberto-oliveira" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="roberto-oliveira" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="roberto-oliveira">
+      <s:element name="check_user">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="check_userResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="check_userResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="return_user_by_id">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="return_user_by_idResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="return_user_by_idResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="return_user_by_email">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="return_user_by_emailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="return_user_by_emailResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="return_list_users">
+        <s:complexType />
+      </s:element>
+      <s:element name="return_list_usersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="return_list_usersResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="create_user">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nome" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="senha" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="create_userResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="create_userResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="update_user">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="nome" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="senha" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="update_userResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="update_userResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="delete_user">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="delete_userResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="delete_userResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="check_userSoapIn">
+    <wsdl:part name="parameters" element="tns:check_user" />
+  </wsdl:message>
+  <wsdl:message name="check_userSoapOut">
+    <wsdl:part name="parameters" element="tns:check_userResponse" />
+  </wsdl:message>
+  <wsdl:message name="return_user_by_idSoapIn">
+    <wsdl:part name="parameters" element="tns:return_user_by_id" />
+  </wsdl:message>
+  <wsdl:message name="return_user_by_idSoapOut">
+    <wsdl:part name="parameters" element="tns:return_user_by_idResponse" />
+  </wsdl:message>
+  <wsdl:message name="return_user_by_emailSoapIn">
+    <wsdl:part name="parameters" element="tns:return_user_by_email" />
+  </wsdl:message>
+  <wsdl:message name="return_user_by_emailSoapOut">
+    <wsdl:part name="parameters" element="tns:return_user_by_emailResponse" />
+  </wsdl:message>
+  <wsdl:message name="return_list_usersSoapIn">
+    <wsdl:part name="parameters" element="tns:return_list_users" />
+  </wsdl:message>
+  <wsdl:message name="return_list_usersSoapOut">
+    <wsdl:part name="parameters" element="tns:return_list_usersResponse" />
+  </wsdl:message>
+  <wsdl:message name="create_userSoapIn">
+    <wsdl:part name="parameters" element="tns:create_user" />
+  </wsdl:message>
+  <wsdl:message name="create_userSoapOut">
+    <wsdl:part name="parameters" element="tns:create_userResponse" />
+  </wsdl:message>
+  <wsdl:message name="update_userSoapIn">
+    <wsdl:part name="parameters" element="tns:update_user" />
+  </wsdl:message>
+  <wsdl:message name="update_userSoapOut">
+    <wsdl:part name="parameters" element="tns:update_userResponse" />
+  </wsdl:message>
+  <wsdl:message name="delete_userSoapIn">
+    <wsdl:part name="parameters" element="tns:delete_user" />
+  </wsdl:message>
+  <wsdl:message name="delete_userSoapOut">
+    <wsdl:part name="parameters" element="tns:delete_userResponse" />
+  </wsdl:message>
+  <wsdl:portType name="webservicewithrestSoap">
+    <wsdl:operation name="check_user">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;br/&gt;&lt;p&gt;&lt;b&gt;Descrição:&lt;/b&gt; Método para verificar se usuário já existe na base de dados.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Parâmetros: &lt;/b&gt;&lt;b&gt;  Email&lt;/b&gt;: tipo String&lt;/p&gt;&lt;ul&gt;&lt;p&gt;&lt;b&gt;Retorno: &lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;True ou False&lt;/b&gt;: tipo Boolean&lt;/li&gt;&lt;/ul&gt;&lt;/ul&gt;&lt;br/&gt;</wsdl:documentation>
+      <wsdl:input message="tns:check_userSoapIn" />
+      <wsdl:output message="tns:check_userSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="return_user_by_id">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;br/&gt;&lt;p&gt;&lt;b&gt;Descrição:&lt;/b&gt; Método retorna o objeto usuário através de seu Id.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Parâmetros: &lt;/b&gt;&lt;b&gt;  Id&lt;/b&gt;: tipo String&lt;/p&gt;&lt;ul&gt;&lt;p&gt;&lt;b&gt;Retorno: &lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;Id&lt;/b&gt;: tipo String&lt;/li&gt;&lt;li&gt;&lt;b&gt;Nome&lt;/b&gt;: tipo String&lt;/li&gt;&lt;li&gt;&lt;b&gt;Email&lt;/b&gt;: tipo String&lt;/li&gt;&lt;li&gt;&lt;b&gt;Senha&lt;/b&gt;: tipo String&lt;/li&gt;&lt;/ul&gt;&lt;/ul&gt;&lt;br/&gt;</wsdl:documentation>
+      <wsdl:input message="tns:return_user_by_idSoapIn" />
+      <wsdl:output message="tns:return_user_by_idSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="return_user_by_email">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;br/&gt;&lt;p&gt;&lt;b&gt;Descrição:&lt;/b&gt; Método retorna o objeto usuário através de seu Email.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Parâmetros: &lt;/b&gt;&lt;b&gt;  Email&lt;/b&gt;: tipo String&lt;/p&gt;&lt;ul&gt;&lt;p&gt;&lt;b&gt;Retorno: &lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;Id&lt;/b&gt;: tipo String&lt;/li&gt;&lt;li&gt;&lt;b&gt;Nome&lt;/b&gt;: tipo String&lt;/li&gt;&lt;li&gt;&lt;b&gt;Email&lt;/b&gt;: tipo String&lt;/li&gt;&lt;li&gt;&lt;b&gt;Senha&lt;/b&gt;: tipo String&lt;/li&gt;&lt;/ul&gt;&lt;/ul&gt;&lt;br/&gt;</wsdl:documentation>
+      <wsdl:input message="tns:return_user_by_emailSoapIn" />
+      <wsdl:output message="tns:return_user_by_emailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="return_list_users">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;br/&gt;&lt;p&gt;&lt;b&gt;Descrição:&lt;/b&gt; Método retorna lista de usuários&lt;/p&gt;&lt;p&gt;&lt;b&gt;Parâmetros: &lt;/b&gt;&lt;b&gt;  No parameters&lt;/b&gt;: No type&lt;/p&gt;&lt;ul&gt;&lt;p&gt;&lt;b&gt;Retorno: &lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;List&lt;Usuario&gt;&lt;/b&gt;: tipo List&lt;&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/ul&gt;&lt;br/&gt;</wsdl:documentation>
+      <wsdl:input message="tns:return_list_usersSoapIn" />
+      <wsdl:output message="tns:return_list_usersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="create_user">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;br/&gt;&lt;p&gt;&lt;b&gt;Descrição:&lt;/b&gt; Método de inserção de um novo usuário.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Parâmetros: &lt;/b&gt;&lt;b&gt;  Nome&lt;/b&gt;: tipo String, &lt;b&gt;Email &lt;/b&gt;: tipo String, &lt;b&gt;Senha &lt;/b&gt;: tipo String&lt;/p&gt;&lt;ul&gt;&lt;p&gt;&lt;b&gt;Retorno: &lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;Mensagem&lt;/b&gt;: Usuário cadastrado com sucesso.&lt;/li&gt;&lt;/ul&gt;&lt;/ul&gt;&lt;br/&gt;</wsdl:documentation>
+      <wsdl:input message="tns:create_userSoapIn" />
+      <wsdl:output message="tns:create_userSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="update_user">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;br/&gt;&lt;p&gt;&lt;b&gt;Descrição:&lt;/b&gt; Método de atualização de um usuário.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Parâmetros: &lt;/b&gt;&lt;b&gt;   Id&lt;/b&gt;: tipo String, &lt;b&gt;Nome&lt;/b&gt;: tipo String, &lt;b&gt;Email &lt;/b&gt;: tipo String, &lt;b&gt;Senha &lt;/b&gt;: tipo String&lt;/p&gt;&lt;ul&gt;&lt;p&gt;&lt;b&gt;Retorno: &lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;Mensagem&lt;/b&gt;: Os dados do usuário foram atualizados com sucesso.&lt;/li&gt;&lt;/ul&gt;&lt;/ul&gt;&lt;br/&gt;</wsdl:documentation>
+      <wsdl:input message="tns:update_userSoapIn" />
+      <wsdl:output message="tns:update_userSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="delete_user">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;br/&gt;&lt;p&gt;&lt;b&gt;Descrição:&lt;/b&gt; Método de exclusão de um usuário.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Parâmetros: &lt;/b&gt;&lt;b&gt;   Id&lt;/b&gt;: tipo String&lt;/p&gt;&lt;ul&gt;&lt;p&gt;&lt;b&gt;Retorno: &lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;Mensagem&lt;/b&gt;: Usuário excluído com sucesso.&lt;/li&gt;&lt;/ul&gt;&lt;/ul&gt;&lt;br/&gt;</wsdl:documentation>
+      <wsdl:input message="tns:delete_userSoapIn" />
+      <wsdl:output message="tns:delete_userSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="webservicewithrestSoap" type="tns:webservicewithrestSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="check_user">
+      <soap:operation soapAction="roberto-oliveira/check_user" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="return_user_by_id">
+      <soap:operation soapAction="roberto-oliveira/return_user_by_id" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="return_user_by_email">
+      <soap:operation soapAction="roberto-oliveira/return_user_by_email" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="return_list_users">
+      <soap:operation soapAction="roberto-oliveira/return_list_users" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="create_user">
+      <soap:operation soapAction="roberto-oliveira/create_user" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="update_user">
+      <soap:operation soapAction="roberto-oliveira/update_user" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="delete_user">
+      <soap:operation soapAction="roberto-oliveira/delete_user" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="webservicewithrestSoap12" type="tns:webservicewithrestSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="check_user">
+      <soap12:operation soapAction="roberto-oliveira/check_user" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="return_user_by_id">
+      <soap12:operation soapAction="roberto-oliveira/return_user_by_id" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="return_user_by_email">
+      <soap12:operation soapAction="roberto-oliveira/return_user_by_email" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="return_list_users">
+      <soap12:operation soapAction="roberto-oliveira/return_list_users" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="create_user">
+      <soap12:operation soapAction="roberto-oliveira/create_user" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="update_user">
+      <soap12:operation soapAction="roberto-oliveira/update_user" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="delete_user">
+      <soap12:operation soapAction="roberto-oliveira/delete_user" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="webservicewithrest">
+    <wsdl:port name="webservicewithrestSoap" binding="tns:webservicewithrestSoap">
+      <soap:address location="http://172.20.12.56/webservices/webservicewithrest.asmx" />
+    </wsdl:port>
+    <wsdl:port name="webservicewithrestSoap12" binding="tns:webservicewithrestSoap12">
+      <soap12:address location="http://172.20.12.56/webservices/webservicewithrest.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
