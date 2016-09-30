@@ -79,6 +79,12 @@ namespace RepositoryBLL
                     var hit = (HtmlInputText)ctr;
                     hit.Value = "";
                 }
+
+                if (ctr is GridView)
+                {
+                    var gv = (GridView)ctr;
+                    gv.DataBind();
+                }
             }
         }
 

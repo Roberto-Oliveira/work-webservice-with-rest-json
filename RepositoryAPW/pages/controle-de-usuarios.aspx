@@ -28,14 +28,14 @@
     <p>
         <asp:GridView CssClass="responsive-table bordered highlight" ID="gvControleUsuarios" runat="server" AllowPaging="True" PageSize="5" OnPageIndexChanging="OnPaging" AutoGenerateColumns="False" OnRowCommand="gvControleUsuarios_RowCommand">
             <Columns>
-                <asp:TemplateField HeaderText="Editar" ShowHeader="False">
+                <asp:TemplateField HeaderText="Selecionar" ShowHeader="False">
                     <ItemTemplate>
-                        <asp:LinkButton ID="lbEditar" runat="server" CausesValidation="False" CommandArgument='<%# Bind("Id") %>' CommandName="add" Text="Editar"></asp:LinkButton>
+                        <asp:LinkButton ID="ibSelecionar" runat="server" CausesValidation="False" CommandArgument='<%# Bind("Id") %>' CommandName="Select" Text="Selecionar" />
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Deletar" ShowHeader="False">
                     <ItemTemplate>
-                        <asp:LinkButton ID="lbDeletar" runat="server" CausesValidation="False" CommandArgument='<%# Bind("Id") %>' CommandName="delete" OnClientClick="return confirm('Deseja concluir a exclusão?')">Deletar</asp:LinkButton>
+                        <asp:LinkButton ID="ibDeletar" runat="server" CausesValidation="False" CommandName="delete" OnClientClick="return confirm('Deseja concluir a exclusão?')" Text="Deletar" CommandArgument='<%# Bind("Id") %>'></asp:LinkButton>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Id">
@@ -51,5 +51,8 @@
                 <asp:BoundField DataField="Senha" HeaderText="Senha" />
             </Columns>
         </asp:GridView>
+    </p>
+    <p>
+        <asp:Label ID="lblMensagem" runat="server" Visible="False"></asp:Label>
     </p>
 </asp:Content>
