@@ -97,7 +97,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <Content Include="pages\controle-de-usuarios.aspx" />
-    <Content Include="pages\users-control.aspx" />
+    <Content Include="user_authenticate.aspx" />
     <Content Include="Web References\wswithrest\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -145,18 +145,18 @@
     <Compile Include="pages\controle-de-usuarios.aspx.designer.cs">
       <DependentUpon>controle-de-usuarios.aspx</DependentUpon>
     </Compile>
-    <Compile Include="pages\users-control.aspx.cs">
-      <DependentUpon>users-control.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="pages\users-control.aspx.designer.cs">
-      <DependentUpon>users-control.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="user_authenticate.aspx.cs">
+      <DependentUpon>user_authenticate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user_authenticate.aspx.designer.cs">
+      <DependentUpon>user_authenticate.aspx</DependentUpon>
     </Compile>
     <Compile Include="Web References\wswithrest\Reference.cs">
       <AutoGen>True</AutoGen>

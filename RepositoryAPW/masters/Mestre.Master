@@ -16,22 +16,23 @@
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <form id="form1" runat="server">
-        <asp:ScriptManager ID="tksmGeneric" runat="server" EnableScriptGlobalization="True"
-            EnableScriptLocalization="True" AsyncPostBackTimeout="12000">
-        </asp:ScriptManager>
-        <div class="container">
-            <asp:UpdatePanel ID="upGeneric" runat="server">
-                <ContentTemplate>
-                    <div id="divMensagem" runat="server">
-                    </div>
-                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                    </asp:ContentPlaceHolder>
-                </ContentTemplate>
-            </asp:UpdatePanel>
-        </div>
-    </form>
-
+    <div class="container">
+        <form class="col s12" id="formGeneric" runat="server">
+            <asp:ScriptManager ID="tksmGeneric" runat="server" EnableScriptGlobalization="True"
+                EnableScriptLocalization="True" AsyncPostBackTimeout="12000">
+            </asp:ScriptManager>
+            <div class="container-fluid">
+                <asp:UpdatePanel ID="upGeneric" runat="server">
+                    <ContentTemplate>
+                        <div id="divMensagem" runat="server">
+                        </div>
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+            </div>
+        </form>
+    </div>
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="/js/materialize.min.js"></script>

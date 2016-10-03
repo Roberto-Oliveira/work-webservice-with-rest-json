@@ -13,7 +13,7 @@ namespace RepositoryAPW.pages
     {
         private readonly webservicewithrest ws = new webservicewithrest();
         private readonly JavaScriptSerializer jss = new JavaScriptSerializer();
-        private readonly string url = "http://localhost:21315/pages/controle-de-usuarios.aspx";
+        private const string url = "http://localhost:21315/pages/controle-de-usuarios.aspx";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -84,24 +84,30 @@ namespace RepositoryAPW.pages
             {
                 var id = Convert.ToInt32(e.CommandArgument);
 
-                if (e.CommandName == "Select")
+                switch (e.CommandName)
                 {
-                    tbEmail.Enabled = false;
+                    case "Select":
 
-                    var dado = ws.return_user_by_id(id.ToString());
+                        tbEmail.Enabled = false;
 
-                    var usuario = jss.Deserialize<Usuario[]>(dado);
+                        var dado = ws.return_user_by_id(id.ToString());
 
-                    Session["Id"] = usuario[0].Id;
-                    tbNome.Text = usuario[0].Nome;
-                    tbEmail.Text = usuario[0].Email;
-                    tbSenha.Text = usuario[0].Senha;
-                }
-                else if (e.CommandName == "delete")
-                {
-                    ws.delete_user(id);
-                    gvDataBind();
-                    Response.Redirect(url);
+                        var usuario = jss.Deserialize<Usuario[]>(dado);
+
+                        Session["Id"] = usuario[0].Id;
+                        tbNome.Text = usuario[0].Nome;
+                        tbEmail.Text = usuario[0].Email;
+                        tbSenha.Text = usuario[0].Senha;
+
+                        break;
+
+                    case "delete":
+
+                        ws.delete_user(id);
+                        gvDataBind();
+                        Response.Redirect(url);
+
+                        break;
                 }
             }
             catch (Exception ex)
@@ -114,6 +120,7 @@ namespace RepositoryAPW.pages
         protected void btnLimpar_Click(object sender, EventArgs e)
         {
             Auxiliar.ClearControls(this);
+            lblMensagem.Visible = false;
             lblMensagem.Text = "";
             tbEmail.Enabled = true;
             Session.Clear();

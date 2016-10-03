@@ -2,11 +2,37 @@
 <ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="webservicewithrest">
   <DataContextMoniker Name="/webservicewithrestDataContext" />
   <nestedChildShapes>
-    <classShape Id="42a5b556-d4df-41b1-91be-7fffa7fefb7d" absoluteBounds="1.875, 2, 2, 1.4248478190104168">
-      <DataClassMoniker Name="/webservicewithrestDataContext/Usuario" />
+    <classShape Id="6ad13dcd-d25c-4000-b0c2-5d6f02552217" absoluteBounds="0.75, 3.5, 2, 1.4248478190104166">
+      <DataClassMoniker Name="/webservicewithrestDataContext/ListaTarefa" />
       <nestedChildShapes>
-        <elementListCompartment Id="50afa549-1485-47d1-a7a1-38e6aec68afe" absoluteBounds="1.8900000000000001, 2.46, 1.9700000000000002, 0.86484781901041674" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="8ffc0c03-3660-4840-8541-394b500de44c" absoluteBounds="0.76500000000000012, 3.96, 1.9700000000000002, 0.86484781901041674" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <classShape Id="44976e52-c481-4d0e-846e-dde3db4ab417" absoluteBounds="0.75, 0.875, 2, 1.4248478190104164">
+      <DataClassMoniker Name="/webservicewithrestDataContext/Usuario" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6ed8ba9d-fe02-4e99-9d6a-7f47ed879fec" absoluteBounds="0.765, 1.335, 1.9700000000000002, 0.86484781901041674" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e67434c5-226a-416b-996c-933171ee3da8" absoluteBounds="4.75, 3.625, 2, 1.4248478190104166">
+      <DataClassMoniker Name="/webservicewithrestDataContext/Tarefa" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3deb93ac-af94-4b0e-be25-47fced648a10" absoluteBounds="4.765, 4.085, 1.9700000000000002, 0.86484781901041674" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(1.75 : 2.29984781901042); (1.75 : 3.5)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/webservicewithrestDataContext/Usuario/Usuario_ListaTarefa" />
+      <nodes>
+        <classShapeMoniker Id="44976e52-c481-4d0e-846e-dde3db4ab417" />
+        <classShapeMoniker Id="6ad13dcd-d25c-4000-b0c2-5d6f02552217" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 4.27492390950521); (4.75 : 4.27492390950521)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/webservicewithrestDataContext/ListaTarefa/ListaTarefa_Tarefa" />
+      <nodes>
+        <classShapeMoniker Id="6ad13dcd-d25c-4000-b0c2-5d6f02552217" />
+        <classShapeMoniker Id="e67434c5-226a-416b-996c-933171ee3da8" />
+      </nodes>
+    </associationConnector>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

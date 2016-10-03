@@ -46,9 +46,15 @@
             return mensagem;
         }
 
-        public static string AtualizadasSucesso()
+        public static string AtualizadasErro()
         {
             mensagem = "Erro ao atualizar informações.";
+            return mensagem;
+        }
+
+        public static string AtualizadasSucesso()
+        {
+            mensagem = "Informações atualizadas com sucesso.";
             return mensagem;
         }
 

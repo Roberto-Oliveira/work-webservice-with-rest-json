@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Web.Script.Serialization;
 using System.Web.Script.Services;
 using System.Web.Services;
@@ -33,6 +34,29 @@ namespace TrabalhoRestAPW.webservices
 
             return verificador > 0;
         }
+
+
+        [WebMethod(Description =
+         "<br/><p><b>Descrição:</b> Método para verificar se usuário já existe na base de dados.</p>" +
+         "<p><b>Parâmetros: </b><b>  Email</b>: tipo String</p>" +
+           "<ul>" +
+              "<p><b>Retorno: </b></p>" +
+                 "<ul>" +
+                    "<li><b>True ou False</b>: tipo Boolean" + "</li>" +
+                 "</ul>" +
+           "</ul><br/>"
+       )]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public bool check_user_authenticate(string email, string senha)
+        {
+            var verificador = (from result in dc.Usuarios
+                               where result.Email.Trim().Equals(email)
+                               && result.Senha.Trim().Equals(senha)
+                               select result).Count();
+
+            return verificador > 0;
+        }
+
 
         [WebMethod(Description =
           "<br/><p><b>Descrição:</b> Método retorna o objeto usuário através de seu Id.</p>" +
@@ -152,7 +176,7 @@ namespace TrabalhoRestAPW.webservices
                     "<li><b>Mensagem</b>: Os dados do usuário foram atualizados com sucesso." + "</li>" +
                  "</ul>" +
            "</ul><br/>"
-       )]
+        )]
         public string update_user(int id, string nome, string email, string senha)
         {
             var usuario = dc.Usuarios.SingleOrDefault(u => u.Id == id);
@@ -176,15 +200,163 @@ namespace TrabalhoRestAPW.webservices
                     "<li><b>Mensagem</b>: Usuário excluído com sucesso." + "</li>" +
                  "</ul>" +
            "</ul><br/>"
-       )]
-        public string delete_user(int Id)
+        )]
+        public string delete_user(int id)
         {
-            var usuario = dc.Usuarios.SingleOrDefault(u => u.Id == Id);
+            var usuario = dc.Usuarios.SingleOrDefault(u => u.Id == id);
 
             if (usuario != null) dc.Usuarios.DeleteOnSubmit(usuario);
             dc.SubmitChanges();
 
             mensagem = "Usuário excluído com sucesso.";
+            return mensagem;
+        }
+
+
+        [WebMethod(Description =
+         "<br/><p><b>Descrição:</b> Método de inserção de uma nova lista.</p>" +
+         "<p><b>Parâmetros: </b><b>  UsuarioId</b>: tipo String, <b>Nome </b>: tipo String, <b>Cor </b>: tipo String</p>" +
+           "<ul>" +
+              "<p><b>Retorno: </b></p>" +
+                 "<ul>" +
+                    "<li><b>Mensagem</b>: Lista cadastrada com sucesso." + "</li>" +
+                 "</ul>" +
+           "</ul><br/>"
+        )]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string create_task_list(string UsuarioId, string nome, string cor)
+        {
+            var lTarefa = new ListaTarefa
+            {
+                UsuarioId = int.Parse(UsuarioId),
+                Nome = nome,
+                Cor = cor
+            };
+
+            dc.ListaTarefas.InsertOnSubmit(lTarefa);
+            dc.SubmitChanges();
+
+            mensagem = "Lista cadastrada com sucesso.";
+
+            return mensagem;
+        }
+
+        [WebMethod(Description =
+        "<br/><p><b>Descrição:</b> Método de inserção de uma nova tarefa.</p>" +
+        "<p><b>Parâmetros: </b><b>  ListaDeTarefaId</b>: tipo String, <b>Descrição </b>: tipo String</p>, <b>Status </b>: tipo String</p>" +
+          "<ul>" +
+             "<p><b>Retorno: </b></p>" +
+                "<ul>" +
+                   "<li><b>Mensagem</b>: Tarefa cadastrada com sucesso." + "</li>" +
+                "</ul>" +
+          "</ul><br/>"
+        )]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string create_task(string ListaDeTarefaId, string descricao, string status)
+        {
+            var tarefa = new Tarefa
+            {
+                ListaTarefaId = int.Parse(ListaDeTarefaId),
+                Descricao = descricao,
+                Status = status
+            };
+
+            dc.Tarefas.InsertOnSubmit(tarefa);
+            dc.SubmitChanges();
+
+            mensagem = "Tarefa cadastrada com sucesso.";
+
+            return mensagem;
+        }
+
+
+
+        [WebMethod(Description =
+        "<br/><p><b>Descrição:</b> Método de atualização de uma tarefa.</p>" +
+        "<p><b>Parâmetros: </b><b>   TarefaId</b>: tipo String, <b>Status</b>: tipo String,</p>" +
+          "<ul>" +
+             "<p><b>Retorno: </b></p>" +
+                "<ul>" +
+                   "<li><b>Mensagem</b>: Tarefa atualizada com sucesso." + "</li>" +
+                "</ul>" +
+          "</ul><br/>"
+        )]
+        public string update_task(int TarefaId, string status)
+        {
+            var tarefa = dc.Tarefas.SingleOrDefault(t => t.Id == TarefaId);
+
+            tarefa.Status = status;
+
+            dc.SubmitChanges();
+
+            mensagem = "Tarefa atualizada com sucesso.";
+            return mensagem;
+        }
+
+        [WebMethod(Description =
+        "<br/><p><b>Descrição:</b> Método de atualização de uma lista de tarefa.</p>" +
+        "<p><b>Parâmetros: </b><b>   ListaDeTarefaId</b>: tipo String, <b>Nome</b>: tipo String, <b>Cor</b>: tipo String</p>" +
+          "<ul>" +
+             "<p><b>Retorno: </b></p>" +
+                "<ul>" +
+                   "<li><b>Mensagem</b>: Tarefa atualizada com sucesso." + "</li>" +
+                "</ul>" +
+          "</ul><br/>"
+        )]
+        public string update_task_list(int ListaDeTarefaId, string nome, string cor)
+        {
+            var lista = dc.ListaTarefas.SingleOrDefault(l => l.Id == ListaDeTarefaId);
+
+            lista.Nome = nome;
+            lista.Cor = cor;
+
+            dc.SubmitChanges();
+
+            mensagem = "Lista de tarefa atualizada com sucesso.";
+            return mensagem;
+        }
+
+        [WebMethod(Description =
+         "<br/><p><b>Descrição:</b> Método de exclusão de uma lista.</p>" +
+         "<p><b>Parâmetros: </b><b>   ListaDeTarefaId</b>: tipo String</p>" +
+           "<ul>" +
+              "<p><b>Retorno: </b></p>" +
+                 "<ul>" +
+                    "<li><b>Mensagem</b>: Tarefa excluída com sucesso." + "</li>" +
+                 "</ul>" +
+           "</ul><br/>"
+        )]
+        public string remove_task_list(int ListaDeTarefaId)
+        {
+            var list = dc.ListaTarefas.SingleOrDefault(u => u.Id == ListaDeTarefaId);
+
+            if (list != null) dc.ListaTarefas.DeleteOnSubmit(list);
+            dc.SubmitChanges();
+
+            mensagem = "Tarefa excluída com sucesso.";
+            return mensagem;
+        }
+
+        [WebMethod(Description =
+         "<br/><p><b>Descrição:</b> Método de localização e autenticação de usuário.</p>" +
+         "<p><b>Parâmetros: </b><b>   Email</b>: tipo String, <b>Senha</b>: tipo String</p>" +
+           "<ul>" +
+              "<p><b>Retorno: </b></p>" +
+                 "<ul>" +
+                    "<li><b>Mensagem</b>: Usuário localizado com sucesso." + "</li>" +
+                 "</ul>" +
+           "</ul><br/>"
+        )]
+        public string user_authenticate(string email, string senha)
+        {
+            if (check_user_authenticate(email, senha))
+            {
+                return_user_by_email(email);
+            }
+            else
+            {
+                mensagem = "Email não existe na base; Senha não confere com o email cadastrado.";
+            }
             return mensagem;
         }
     }

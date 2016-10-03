@@ -75,6 +75,10 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\RepositoryBLL\RepositoryBLL.csproj">
+      <Project>{409CE8F2-9929-490F-8EC7-B952CF070266}</Project>
+      <Name>RepositoryBLL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TrabalhoRestBLL\TrabalhoRestBLL.csproj">
       <Project>{77B29800-03E4-4B8C-BBD5-C90E261E5ADB}</Project>
       <Name>TrabalhoRestBLL</Name>

@@ -3,18 +3,18 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <p class="input-field">
+    <div class="input-field col s4">
         <i class="material-icons prefix">account_circle</i>
         <asp:TextBox ID="tbNome" runat="server" CssClass="validate" MaxLength="50" length="50" placeholder="Nome:" required="true"></asp:TextBox>
-    </p>
-    <p class="input-field">
+    </div>
+    <div class="input-field col s4">
         <i class="material-icons prefix">email</i>
         <asp:TextBox ID="tbEmail" runat="server" CssClass="validate" MaxLength="50" length="50" placeholder="Email:" required="true"></asp:TextBox>
-    </p>
-    <p class="input-field">
+    </div>
+    <div class="input-field col s4">
         <i class="material-icons prefix">vpn_key</i>
         <asp:TextBox ID="tbSenha" runat="server" CssClass="validate" MaxLength="50" length="50" placeholder="Senha:" required="true"></asp:TextBox>
-    </p>
+    </div>
     <p>
         <i class="btn-floating btn-medium waves-effect waves-light green material-icons">
             <asp:Button ID="btnGravar" runat="server" Text="add" OnClick="btnGravar_Click" ToolTip="Gravar Informações" />
@@ -38,7 +38,7 @@
                         <asp:LinkButton ID="ibDeletar" runat="server" CausesValidation="False" CommandName="delete" OnClientClick="return confirm('Deseja concluir a exclusão?')" Text="Deletar" CommandArgument='<%# Bind("Id") %>'></asp:LinkButton>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="Id">
+                <asp:TemplateField HeaderText="Id" SortExpression="Id">
                     <EditItemTemplate>
                         <asp:TextBox ID="tbId" runat="server" Text='<%# Bind("Id") %>'></asp:TextBox>
                     </EditItemTemplate>
@@ -46,13 +46,13 @@
                         <asp:Label ID="lblId" runat="server" Text='<%# Bind("Id") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:BoundField DataField="Nome" HeaderText="Nome" />
-                <asp:BoundField DataField="Email" HeaderText="Email" />
-                <asp:BoundField DataField="Senha" HeaderText="Senha" />
+                <asp:BoundField DataField="Nome" HeaderText="Nome" SortExpression="Nome" />
+                <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
+                <asp:BoundField DataField="Senha" HeaderText="Senha" SortExpression="Senha" />
             </Columns>
         </asp:GridView>
     </p>
     <p>
-        <asp:Label ID="lblMensagem" runat="server" Visible="False"></asp:Label>
+        <asp:Label ID="lblMensagem" runat="server" Visible="False" ForeColor="Red"></asp:Label>
     </p>
 </asp:Content>
