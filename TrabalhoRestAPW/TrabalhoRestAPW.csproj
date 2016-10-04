@@ -83,6 +83,10 @@
       <Project>{77B29800-03E4-4B8C-BBD5-C90E261E5ADB}</Project>
       <Name>TrabalhoRestBLL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TrabalhoRestDAO\TrabalhoRestDAO.csproj">
+      <Project>{9300CE5A-C04E-4CCC-AB8C-0023F56E29DB}</Project>
+      <Name>TrabalhoRestDAO</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

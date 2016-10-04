@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Web.Script.Serialization;
 using System.Web.Script.Services;
 using System.Web.Services;
@@ -49,10 +48,10 @@ namespace TrabalhoRestAPW.webservices
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public bool check_user_authenticate(string email, string senha)
         {
-            var verificador = (from result in dc.Usuarios
-                               where result.Email.Trim().Equals(email)
-                               && result.Senha.Trim().Equals(senha)
-                               select result).Count();
+            var verificador = (from u in dc.Usuarios
+                               where u.Email.Trim().Equals(email)
+                               && u.Senha.Trim().Equals(senha)
+                               select u).Count();
 
             return verificador > 0;
         }
@@ -343,7 +342,7 @@ namespace TrabalhoRestAPW.webservices
            "<ul>" +
               "<p><b>Retorno: </b></p>" +
                  "<ul>" +
-                    "<li><b>Mensagem</b>: Usuário localizado com sucesso." + "</li>" +
+                    "<li><b>Mensagem</b>: Retorna o usuário." + "</li>" +
                  "</ul>" +
            "</ul><br/>"
         )]
@@ -351,13 +350,40 @@ namespace TrabalhoRestAPW.webservices
         {
             if (check_user_authenticate(email, senha))
             {
-                return_user_by_email(email);
+                var usuario = dc.Usuarios.
+                    Where(u => u.Email == email).
+                    Select(u => new
+                    {
+                        u.Id,
+                        u.Nome,
+                        u.Email,
+                        u.Senha
+                    });
+
+                var jss = new JavaScriptSerializer();
+
+                var json = jss.Serialize(usuario);
+
+                return json;
             }
-            else
-            {
-                mensagem = "Email não existe na base; Senha não confere com o email cadastrado.";
-            }
+            mensagem = "Email não existe na base; Senha não confere com o email cadastrado.";
             return mensagem;
+        }
+
+
+        [WebMethod(Description =
+        "<br/><p><b>Descrição:</b> Método de localização do usuário, resetar sua senha e enviar um email com a nova senha.</p>" +
+        "<p><b>Parâmetros: </b><b>   Email</b>: tipo String, <b>Senha</b>: tipo String</p>" +
+          "<ul>" +
+             "<p><b>Retorno: </b></p>" +
+                "<ul>" +
+                   "<li><b>Mensagem</b>: Retorna o usuário." + "</li>" +
+                "</ul>" +
+          "</ul><br/>"
+       )]
+        public string forgot_password(string email)
+        {
+            return "";
         }
     }
 }
