@@ -2,36 +2,49 @@
 <ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="webservicewithrest">
   <DataContextMoniker Name="/webservicewithrestDataContext" />
   <nestedChildShapes>
-    <classShape Id="6ad13dcd-d25c-4000-b0c2-5d6f02552217" absoluteBounds="0.75, 3.5, 2, 1.4248478190104166">
-      <DataClassMoniker Name="/webservicewithrestDataContext/ListaTarefa" />
+    <classShape Id="a36c48f5-d771-4134-a2e2-f0a5b1824419" absoluteBounds="0.75, 4.375, 2, 1.9178898111979166">
+      <DataClassMoniker Name="/webservicewithrestDataContext/FacebookUser" />
       <nestedChildShapes>
-        <elementListCompartment Id="8ffc0c03-3660-4840-8541-394b500de44c" absoluteBounds="0.76500000000000012, 3.96, 1.9700000000000002, 0.86484781901041674" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="a1a7bc81-a94a-49ee-9489-701735bbb36b" absoluteBounds="0.765, 4.835, 1.9700000000000002, 1.3578898111979165" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="44976e52-c481-4d0e-846e-dde3db4ab417" absoluteBounds="0.75, 0.875, 2, 1.4248478190104164">
+    <classShape Id="d48ec12e-9c88-41c2-95b4-3df629c5d2b9" absoluteBounds="0.75, 1, 2, 1.4248478190104166">
       <DataClassMoniker Name="/webservicewithrestDataContext/Usuario" />
       <nestedChildShapes>
-        <elementListCompartment Id="6ed8ba9d-fe02-4e99-9d6a-7f47ed879fec" absoluteBounds="0.765, 1.335, 1.9700000000000002, 0.86484781901041674" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="034c581e-141b-44a0-89bd-7497fed7b538" absoluteBounds="0.765, 1.46, 1.9700000000000002, 0.86484781901041674" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="e67434c5-226a-416b-996c-933171ee3da8" absoluteBounds="4.75, 3.625, 2, 1.4248478190104166">
+    <classShape Id="f5f07b34-a852-4261-bb8b-ae9e9f115e6b" absoluteBounds="3.5, 0.875, 2, 1.5891951497395833">
+      <DataClassMoniker Name="/webservicewithrestDataContext/ListaTarefa" />
+      <nestedChildShapes>
+        <elementListCompartment Id="dd775a78-831d-4693-ba99-9ee9a8ddf008" absoluteBounds="3.515, 1.335, 1.9700000000000002, 1.0291951497395833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6dfa1b8c-3035-4cb3-8f5e-fb10a2263c5c" absoluteBounds="6.25, 1, 2, 1.4248478190104166">
       <DataClassMoniker Name="/webservicewithrestDataContext/Tarefa" />
       <nestedChildShapes>
-        <elementListCompartment Id="3deb93ac-af94-4b0e-be25-47fced648a10" absoluteBounds="4.765, 4.085, 1.9700000000000002, 0.86484781901041674" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="eac4c23e-456b-4e0e-8696-1db700bdda5a" absoluteBounds="6.265, 1.46, 1.9700000000000002, 0.86484781901041674" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(1.75 : 2.29984781901042); (1.75 : 3.5)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/webservicewithrestDataContext/Usuario/Usuario_ListaTarefa" />
+    <associationConnector edgePoints="[(2.75 : 5.33394490559896); (4.5 : 5.33394490559896); (4.5 : 2.46419514973958)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/webservicewithrestDataContext/FacebookUser/FacebookUser_ListaTarefa" />
       <nodes>
-        <classShapeMoniker Id="44976e52-c481-4d0e-846e-dde3db4ab417" />
-        <classShapeMoniker Id="6ad13dcd-d25c-4000-b0c2-5d6f02552217" />
+        <classShapeMoniker Id="a36c48f5-d771-4134-a2e2-f0a5b1824419" />
+        <classShapeMoniker Id="f5f07b34-a852-4261-bb8b-ae9e9f115e6b" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 4.27492390950521); (4.75 : 4.27492390950521)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 1.71242390950521); (3.5 : 1.71242390950521)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/webservicewithrestDataContext/Usuario/Usuario_ListaTarefa" />
+      <nodes>
+        <classShapeMoniker Id="d48ec12e-9c88-41c2-95b4-3df629c5d2b9" />
+        <classShapeMoniker Id="f5f07b34-a852-4261-bb8b-ae9e9f115e6b" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 1.71242390950521); (6.25 : 1.71242390950521)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/webservicewithrestDataContext/ListaTarefa/ListaTarefa_Tarefa" />
       <nodes>
-        <classShapeMoniker Id="6ad13dcd-d25c-4000-b0c2-5d6f02552217" />
-        <classShapeMoniker Id="e67434c5-226a-416b-996c-933171ee3da8" />
+        <classShapeMoniker Id="f5f07b34-a852-4261-bb8b-ae9e9f115e6b" />
+        <classShapeMoniker Id="6dfa1b8c-3035-4cb3-8f5e-fb10a2263c5c" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

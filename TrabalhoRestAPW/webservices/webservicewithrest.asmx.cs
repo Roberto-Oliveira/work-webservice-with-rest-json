@@ -1,7 +1,11 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Web.Script.Serialization;
 using System.Web.Script.Services;
 using System.Web.Services;
+using RepositoryBLL;
 using TrabalhoRestBLL;
 
 namespace TrabalhoRestAPW.webservices
@@ -56,6 +60,25 @@ namespace TrabalhoRestAPW.webservices
             return verificador > 0;
         }
 
+        [WebMethod(Description =
+         "<br/><p><b>Descrição:</b> Método para verificar se usuário através do email.</p>" +
+         "<p><b>Parâmetros: </b><b>  Email</b>: tipo String</p>" +
+           "<ul>" +
+              "<p><b>Retorno: </b></p>" +
+                 "<ul>" +
+                    "<li><b>True ou False</b>: tipo Boolean" + "</li>" +
+                 "</ul>" +
+           "</ul><br/>"
+        )]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public bool check_user_by_email(string email)
+        {
+            var usuario = (from u in dc.Usuarios
+                           where u.Email.Trim().Equals(email)
+                           select u).Count();
+
+            return usuario > 0;
+        }
 
         [WebMethod(Description =
           "<br/><p><b>Descrição:</b> Método retorna o objeto usuário através de seu Id.</p>" +
@@ -107,6 +130,12 @@ namespace TrabalhoRestAPW.webservices
             var json = jss.Serialize(usuario);
 
             return json;
+        }
+
+        public Usuario ObterUsuario(string email)
+        {
+            var query = dc.Usuarios.Where(u => u.Email == email);
+            return query.FirstOrDefault();
         }
 
         [WebMethod(Description =
@@ -370,7 +399,6 @@ namespace TrabalhoRestAPW.webservices
             return mensagem;
         }
 
-
         [WebMethod(Description =
         "<br/><p><b>Descrição:</b> Método de localização do usuário, resetar sua senha e enviar um email com a nova senha.</p>" +
         "<p><b>Parâmetros: </b><b>   Email</b>: tipo String, <b>Senha</b>: tipo String</p>" +
@@ -383,7 +411,31 @@ namespace TrabalhoRestAPW.webservices
        )]
         public string forgot_password(string email)
         {
-            return "";
+            try
+            {
+                if (check_user_by_email(email))
+                {
+                    var usuario = ObterUsuario(email);
+                    var senha = Auxiliar.gerarSenha(7);
+
+                    usuario.Senha = senha;
+                    dc.SubmitChanges();
+
+                    mensagem = "Webservice lhe enviou uma nova senha: " + senha;
+
+                    Auxiliar.SendEmail(mensagem, email);
+                }
+                else
+                {
+                    mensagem = "O email " + "'" + email + "'" + " não consta em nossa base de dados.";
+                }
+            }
+            catch (Exception ex)
+            {
+                mensagem = ex.Message;
+            }
+
+            return mensagem;
         }
     }
 }

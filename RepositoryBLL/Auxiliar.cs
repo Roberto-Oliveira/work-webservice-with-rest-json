@@ -1,13 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data.Linq.Mapping;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Mail;
 using System.Reflection;
 using System.Runtime.Serialization;
+using System.Web.Script.Serialization;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
+using TrabalhoRestBLL;
 
 namespace RepositoryBLL
 {
@@ -95,66 +100,38 @@ namespace RepositoryBLL
             ((DropDownList)sender).Items.Insert(0, new ListItem("Selecione...", "-1"));
         }
 
-        public static void EnviaEmail(string remetenteEmail, string destinatarioEmail, string responderEmail,
-            string copiaDestinatarioEmail, string assuntoMsg, string mensage, string servidorSmtp)
+
+        public static void SendEmail(string quemEnviou, string quemRecebera)
         {
-            // Estancia da Classe de Mensagem
-            var _mailMessage = new MailMessage { From = new MailAddress(remetenteEmail) };
+            #region // Corpo do email
+            const string email = "roberto.oliveira.engineer@gmail.com";
+            const string password = "rm121319";
+            #endregion
+            var body = "" + quemEnviou;
 
+            try
+            {
+                var mail = new MailMessage();
+                mail.To.Add(quemRecebera);
+                mail.From = new MailAddress(email);
+                mail.Subject = "Teste de envio de email via Webservice com rest.";
+                mail.Body = body;
+                mail.IsBodyHtml = true;
 
-            //// CONFIGURACOES 
+                var client = new SmtpClient
+                {
+                    Host = "smtp.gmail.com",
+                    Credentials = new NetworkCredential(email, password),
+                    Port = 587,
+                    EnableSsl = true
+                };
 
-            // Remetente
-            //Este email deve ser válido e existir como conta de email para o domínio
-
-            // Destinatario
-            //DIGITE AQUI O E-MAIL PARA O QUAL SERÁ ENCAMINHADO O FORMULARIO
-            _mailMessage.To.Add(destinatarioEmail);
-
-            //Enviar cópia  para.
-            _mailMessage.CC.Add(copiaDestinatarioEmail);
-
-            //Enviar cópia oculta para.
-            //_mailMessage.Bcc("Leone ");
-
-            //responder para email
-            _mailMessage.Headers.Add("Reply-To", responderEmail);
-
-            //confirmaçção de leitura
-            _mailMessage.Headers.Add("Disposition-Notification-To", "<" + responderEmail + ">");
-
-            //Prioridade da mensagem: Low, Normal ou High 
-            _mailMessage.Priority = MailPriority.High;
-
-            // Assunto  
-            _mailMessage.Subject = assuntoMsg; //txtAssunto.Text;
-
-            // A mensagem é do tipo HTML ou Texto Puro?  
-            _mailMessage.IsBodyHtml = true;
-            //_mailMessage.IsBodyHtml = false
-
-            // Corpo da Mensagem  
-            _mailMessage.Body = mensage;
-
-            //// ANEXO 
-            //  Attachment arquivoAnexo = new Attachment(caminhoArq + "relatorio.pdf");
-            // _mailMessage.Attachments.Add(arquivoAnexo);
-
-            /// ENVIO 
-
-            // Estancia a Classe de Envio  
-            //DIGITE AQUI O NOME DO SERVIDOR DE SMTP QUE VOCÊ IRA UTILIZAR
-            var _smtpClient = new SmtpClient(servidorSmtp);
-
-            // DIGITE UM E-MAIL VÁLIDO E UMA SENHA PARA AUTENTICACAO NO SERVIDOR SMTP
-            // Credencial para envio por SMTP Seguro (Quando o servidor exige autenticação)  
-            // _smtpClient.Credentials = new NetworkCredential("teste@crdancas.com", "crd123");
-
-            // Envia a mensagem  
-            _smtpClient.Send(_mailMessage);
-
-            // Libera recursos 
-            _mailMessage.Dispose();
+                client.Send(mail);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao enviar o email: " + ex.Message);
+            }
         }
 
         /// <summary>

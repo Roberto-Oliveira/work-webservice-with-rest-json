@@ -14,7 +14,7 @@ namespace RepositoryAPW.pages
         private readonly webservicewithrest ws = new webservicewithrest();
         private readonly JavaScriptSerializer jss = new JavaScriptSerializer();
         private const string url = "http://localhost:21315/pages/controle-de-usuarios.aspx";
-
+       
         protected void Page_Load(object sender, EventArgs e)
         {
             gvDataBind();

@@ -62,6 +62,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Content Include="js\authFacebook.js" />
     <Content Include="webservices\webservicewithrest.asmx" />
     <None Include="Properties\PublishProfiles\webservicewithrestjson.pubxml" />
     <None Include="Web.Debug.config">
