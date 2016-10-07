@@ -62,7 +62,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Content Include="js\authFacebook.js" />
     <Content Include="webservices\webservicewithrest.asmx" />
     <None Include="Properties\PublishProfiles\webservicewithrestjson.pubxml" />
     <None Include="Web.Debug.config">
@@ -102,6 +101,10 @@
       <DependentUpon>webservicewithrest.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="js\" />
+    <Folder Include="pages\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

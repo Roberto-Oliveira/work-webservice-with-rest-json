@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Linq;
-using System.Net;
-using System.Net.Mail;
 using System.Web.Script.Serialization;
 using System.Web.Script.Services;
 using System.Web.Services;
@@ -37,6 +35,27 @@ namespace TrabalhoRestAPW.webservices
 
             return verificador > 0;
         }
+
+
+       // [WebMethod(Description =
+       //  "<br/><p><b>Descrição:</b> Método para verificar se usuário do facebook já existe na base de dados.</p>" +
+       //  "<p><b>Parâmetros: </b><b>  Email</b>: tipo String</p>" +
+       //    "<ul>" +
+       //       "<p><b>Retorno: </b></p>" +
+       //          "<ul>" +
+       //             "<li><b>True ou False</b>: tipo Boolean" + "</li>" +
+       //          "</ul>" +
+       //    "</ul><br/>"
+       //)]
+       // [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+       // public bool check_user_facebook(string email)
+       // {
+       //     var verificador = (from u in dc.UsuarioFacebooks
+       //                        where u.email.Trim().Equals(email)
+       //                        select u).Count();
+
+       //     return verificador > 0;
+       // }
 
 
         [WebMethod(Description =
@@ -93,11 +112,17 @@ namespace TrabalhoRestAPW.webservices
                   "</ul>" +
             "</ul><br/>"
         )]
-        public string return_user_by_id(string id)
+        public string return_user_by_id(int id)
         {
-            var usuario = from result in dc.Usuarios
-                          where result.Id == int.Parse(id)
-                          select result;
+            var usuario = dc.Usuarios.
+                Where(u => u.Id == id).
+                   Select(u => new
+                   {
+                       u.Id,
+                       u.Nome,
+                       u.Email,
+                       u.Senha
+                   });
 
             var jss = new JavaScriptSerializer();
 
@@ -150,8 +175,14 @@ namespace TrabalhoRestAPW.webservices
         )]
         public string return_list_users()
         {
-            var lista = from result in dc.Usuarios
-                        select result;
+            var lista = dc.Usuarios.
+                   Select(u => new
+                   {
+                       u.Id,
+                       u.Nome,
+                       u.Email,
+                       u.Senha
+                   });
 
             var jss = new JavaScriptSerializer();
             var json = jss.Serialize(lista);
@@ -193,6 +224,45 @@ namespace TrabalhoRestAPW.webservices
             }
             return mensagem;
         }
+
+        [WebMethod(Description =
+         "<br/><p><b>Descrição:</b> Método de inserção de um novo usuário através de login do facebook.</p>" +
+         "<p><b>Parâmetros: </b><b>  Id</b>: tipo String, <b>Nome </b>: tipo String, <b>Email </b>: tipo String</p>" +
+           "<ul>" +
+              "<p><b>Retorno: </b></p>" +
+                 "<ul>" +
+                    "<li><b>Mensagem</b>: Usuário cadastrado com sucesso." + "</li>" +
+                 "</ul>" +
+           "</ul><br/>"
+       )]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string create_user_facebook(string _id, string _nome, string _email)
+        {
+            if (check_user_facebook(_email))
+            {
+                mensagem = "Já existe um usuário cadastrado com este email.";
+            }
+            else
+            {
+                var usuarioFacebook = new UsuarioFacebook();
+                var usuario = new Usuario();
+
+                usuario.Id = Convert.ToInt32(_id);
+                usuario.Nome = _nome;
+                usuario.Email = _email;
+
+                usuario.u
+                
+
+
+                dc.FacebookUsers.InsertOnSubmit(usuario);
+                dc.SubmitChanges();
+
+                mensagem = "Usuário cadastrado com sucesso.";
+            }
+            return mensagem;
+        }
+
 
 
         [WebMethod(Description =

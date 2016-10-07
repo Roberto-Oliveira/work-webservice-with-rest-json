@@ -14,7 +14,7 @@ namespace RepositoryAPW.pages
         private readonly webservicewithrest ws = new webservicewithrest();
         private readonly JavaScriptSerializer jss = new JavaScriptSerializer();
         private const string url = "http://localhost:21315/pages/controle-de-usuarios.aspx";
-       
+
         protected void Page_Load(object sender, EventArgs e)
         {
             gvDataBind();
@@ -49,6 +49,8 @@ namespace RepositoryAPW.pages
                         gvDataBind();
 
                         Auxiliar.ClearControls(this);
+
+                        throw new Exception("Dados salvos com sucesso.");
                     }
                     else
                     {
@@ -66,9 +68,6 @@ namespace RepositoryAPW.pages
 
                     throw new Exception("Dados atualizados com sucesso.");
                 }
-
-                Session.Clear();
-
             }
             catch (Exception ex)
             {
@@ -76,6 +75,8 @@ namespace RepositoryAPW.pages
                 lblMensagem.Text = ex.Message;
                 Session.Clear();
             }
+
+            Session.Clear();
         }
 
         protected void gvControleUsuarios_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -90,7 +91,7 @@ namespace RepositoryAPW.pages
 
                         tbEmail.Enabled = false;
 
-                        var dado = ws.return_user_by_id(id.ToString());
+                        var dado = ws.return_user_by_id(id);
 
                         var usuario = jss.Deserialize<Usuario[]>(dado);
 

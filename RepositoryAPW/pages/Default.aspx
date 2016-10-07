@@ -9,7 +9,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:HyperLink ID="link" runat="server">Login with Facebook</asp:HyperLink>
+            <asp:HyperLink ID="hlLogarWithFacebook" runat="server"></asp:HyperLink>
         </div>
     </form>
 </body>

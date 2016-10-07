@@ -8,6 +8,7 @@ using System.Net;
 using System.Net.Mail;
 using System.Reflection;
 using System.Runtime.Serialization;
+using System.Text;
 using System.Web.Script.Serialization;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;

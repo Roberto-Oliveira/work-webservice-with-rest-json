@@ -43,12 +43,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="aspsnippets.facebookapi, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dlls\aspsnippets.facebookapi.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -67,6 +72,7 @@
     <Content Include="css\materialize.css" />
     <Content Include="css\materialize.min.css" />
     <Content Include="css\roberto-oliveira.css" />
+    <Content Include="dlls\aspsnippets.facebookapi.dll" />
     <Content Include="js\materialize.js" />
     <Content Include="js\materialize.min.js" />
     <Content Include="packages.config" />
@@ -97,14 +103,13 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Content Include="pages\CallbackFacebook.aspx" />
     <Content Include="pages\controle-de-usuarios.aspx" />
     <Content Include="pages\Default.aspx" />
-    <Content Include="facebookuser_authenticate.aspx" />
-    <Content Include="Web References\wswithrest\Reference.map">
+    <Content Include="pages\user.aspx" />
+    <None Include="Web References\wswithrest\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </Content>
+    </None>
     <None Include="Web References\wswithrest\webservicewithrest.wsdl" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -143,13 +148,6 @@
     <Compile Include="masters\Mestre.Master.designer.cs">
       <DependentUpon>Mestre.Master</DependentUpon>
     </Compile>
-    <Compile Include="pages\CallbackFacebook.aspx.cs">
-      <DependentUpon>CallbackFacebook.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="pages\CallbackFacebook.aspx.designer.cs">
-      <DependentUpon>CallbackFacebook.aspx</DependentUpon>
-    </Compile>
     <Compile Include="pages\controle-de-usuarios.aspx.cs">
       <DependentUpon>controle-de-usuarios.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -164,18 +162,18 @@
     <Compile Include="pages\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="pages\user.aspx.cs">
+      <DependentUpon>user.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\user.aspx.designer.cs">
+      <DependentUpon>user.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
-    <Compile Include="facebookuser_authenticate.aspx.cs">
-      <DependentUpon>facebookuser_authenticate.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="facebookuser_authenticate.aspx.designer.cs">
-      <DependentUpon>facebookuser_authenticate.aspx</DependentUpon>
     </Compile>
     <Compile Include="Web References\wswithrest\Reference.cs">
       <AutoGen>True</AutoGen>

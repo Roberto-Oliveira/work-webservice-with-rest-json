@@ -16,10 +16,53 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="check_user_facebook">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="check_user_facebookResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="check_user_facebookResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="check_user_authenticate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="senha" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="check_user_authenticateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="check_user_authenticateResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="check_user_by_email">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="check_user_by_emailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="check_user_by_emailResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="return_user_by_id">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -70,6 +113,22 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="create_user_facebook">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_nome" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_email" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="create_user_facebookResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="create_user_facebookResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="update_user">
         <s:complexType>
           <s:sequence>
@@ -90,7 +149,7 @@
       <s:element name="delete_user">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -101,6 +160,112 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="create_task_list">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UsuarioId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nome" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cor" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="create_task_listResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="create_task_listResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="create_task">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListaDeTarefaId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="descricao" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="status" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="create_taskResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="create_taskResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="update_task">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="TarefaId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="status" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="update_taskResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="update_taskResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="update_task_list">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ListaDeTarefaId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="nome" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cor" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="update_task_listResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="update_task_listResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="remove_task_list">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ListaDeTarefaId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="remove_task_listResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="remove_task_listResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="user_authenticate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="senha" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="user_authenticateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user_authenticateResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="forgot_password">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="forgot_passwordResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="forgot_passwordResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="check_userSoapIn">
@@ -108,6 +273,24 @@
   </wsdl:message>
   <wsdl:message name="check_userSoapOut">
     <wsdl:part name="parameters" element="tns:check_userResponse" />
+  </wsdl:message>
+  <wsdl:message name="check_user_facebookSoapIn">
+    <wsdl:part name="parameters" element="tns:check_user_facebook" />
+  </wsdl:message>
+  <wsdl:message name="check_user_facebookSoapOut">
+    <wsdl:part name="parameters" element="tns:check_user_facebookResponse" />
+  </wsdl:message>
+  <wsdl:message name="check_user_authenticateSoapIn">
+    <wsdl:part name="parameters" element="tns:check_user_authenticate" />
+  </wsdl:message>
+  <wsdl:message name="check_user_authenticateSoapOut">
+    <wsdl:part name="parameters" element="tns:check_user_authenticateResponse" />
+  </wsdl:message>
+  <wsdl:message name="check_user_by_emailSoapIn">
+    <wsdl:part name="parameters" element="tns:check_user_by_email" />
+  </wsdl:message>
+  <wsdl:message name="check_user_by_emailSoapOut">
+    <wsdl:part name="parameters" element="tns:check_user_by_emailResponse" />
   </wsdl:message>
   <wsdl:message name="return_user_by_idSoapIn">
     <wsdl:part name="parameters" element="tns:return_user_by_id" />
@@ -133,6 +316,12 @@
   <wsdl:message name="create_userSoapOut">
     <wsdl:part name="parameters" element="tns:create_userResponse" />
   </wsdl:message>
+  <wsdl:message name="create_user_facebookSoapIn">
+    <wsdl:part name="parameters" element="tns:create_user_facebook" />
+  </wsdl:message>
+  <wsdl:message name="create_user_facebookSoapOut">
+    <wsdl:part name="parameters" element="tns:create_user_facebookResponse" />
+  </wsdl:message>
   <wsdl:message name="update_userSoapIn">
     <wsdl:part name="parameters" element="tns:update_user" />
   </wsdl:message>
@@ -145,11 +334,68 @@
   <wsdl:message name="delete_userSoapOut">
     <wsdl:part name="parameters" element="tns:delete_userResponse" />
   </wsdl:message>
+  <wsdl:message name="create_task_listSoapIn">
+    <wsdl:part name="parameters" element="tns:create_task_list" />
+  </wsdl:message>
+  <wsdl:message name="create_task_listSoapOut">
+    <wsdl:part name="parameters" element="tns:create_task_listResponse" />
+  </wsdl:message>
+  <wsdl:message name="create_taskSoapIn">
+    <wsdl:part name="parameters" element="tns:create_task" />
+  </wsdl:message>
+  <wsdl:message name="create_taskSoapOut">
+    <wsdl:part name="parameters" element="tns:create_taskResponse" />
+  </wsdl:message>
+  <wsdl:message name="update_taskSoapIn">
+    <wsdl:part name="parameters" element="tns:update_task" />
+  </wsdl:message>
+  <wsdl:message name="update_taskSoapOut">
+    <wsdl:part name="parameters" element="tns:update_taskResponse" />
+  </wsdl:message>
+  <wsdl:message name="update_task_listSoapIn">
+    <wsdl:part name="parameters" element="tns:update_task_list" />
+  </wsdl:message>
+  <wsdl:message name="update_task_listSoapOut">
+    <wsdl:part name="parameters" element="tns:update_task_listResponse" />
+  </wsdl:message>
+  <wsdl:message name="remove_task_listSoapIn">
+    <wsdl:part name="parameters" element="tns:remove_task_list" />
+  </wsdl:message>
+  <wsdl:message name="remove_task_listSoapOut">
+    <wsdl:part name="parameters" element="tns:remove_task_listResponse" />
+  </wsdl:message>
+  <wsdl:message name="user_authenticateSoapIn">
+    <wsdl:part name="parameters" element="tns:user_authenticate" />
+  </wsdl:message>
+  <wsdl:message name="user_authenticateSoapOut">
+    <wsdl:part name="parameters" element="tns:user_authenticateResponse" />
+  </wsdl:message>
+  <wsdl:message name="forgot_passwordSoapIn">
+    <wsdl:part name="parameters" element="tns:forgot_password" />
+  </wsdl:message>
+  <wsdl:message name="forgot_passwordSoapOut">
+    <wsdl:part name="parameters" element="tns:forgot_passwordResponse" />
+  </wsdl:message>
   <wsdl:portType name="webservicewithrestSoap">
     <wsdl:operation name="check_user">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;br/&gt;&lt;p&gt;&lt;b&gt;Descrição:&lt;/b&gt; Método para verificar se usuário já existe na base de dados.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Parâmetros: &lt;/b&gt;&lt;b&gt;  Email&lt;/b&gt;: tipo String&lt;/p&gt;&lt;ul&gt;&lt;p&gt;&lt;b&gt;Retorno: &lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;True ou False&lt;/b&gt;: tipo Boolean&lt;/li&gt;&lt;/ul&gt;&lt;/ul&gt;&lt;br/&gt;</wsdl:documentation>
       <wsdl:input message="tns:check_userSoapIn" />
       <wsdl:output message="tns:check_userSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="check_user_facebook">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;br/&gt;&lt;p&gt;&lt;b&gt;Descrição:&lt;/b&gt; Método para verificar se usuário do facebook já existe na base de dados.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Parâmetros: &lt;/b&gt;&lt;b&gt;  Email&lt;/b&gt;: tipo String&lt;/p&gt;&lt;ul&gt;&lt;p&gt;&lt;b&gt;Retorno: &lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;True ou False&lt;/b&gt;: tipo Boolean&lt;/li&gt;&lt;/ul&gt;&lt;/ul&gt;&lt;br/&gt;</wsdl:documentation>
+      <wsdl:input message="tns:check_user_facebookSoapIn" />
+      <wsdl:output message="tns:check_user_facebookSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="check_user_authenticate">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;br/&gt;&lt;p&gt;&lt;b&gt;Descrição:&lt;/b&gt; Método para verificar se usuário já existe na base de dados.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Parâmetros: &lt;/b&gt;&lt;b&gt;  Email&lt;/b&gt;: tipo String&lt;/p&gt;&lt;ul&gt;&lt;p&gt;&lt;b&gt;Retorno: &lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;True ou False&lt;/b&gt;: tipo Boolean&lt;/li&gt;&lt;/ul&gt;&lt;/ul&gt;&lt;br/&gt;</wsdl:documentation>
+      <wsdl:input message="tns:check_user_authenticateSoapIn" />
+      <wsdl:output message="tns:check_user_authenticateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="check_user_by_email">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;br/&gt;&lt;p&gt;&lt;b&gt;Descrição:&lt;/b&gt; Método para verificar se usuário através do email.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Parâmetros: &lt;/b&gt;&lt;b&gt;  Email&lt;/b&gt;: tipo String&lt;/p&gt;&lt;ul&gt;&lt;p&gt;&lt;b&gt;Retorno: &lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;True ou False&lt;/b&gt;: tipo Boolean&lt;/li&gt;&lt;/ul&gt;&lt;/ul&gt;&lt;br/&gt;</wsdl:documentation>
+      <wsdl:input message="tns:check_user_by_emailSoapIn" />
+      <wsdl:output message="tns:check_user_by_emailSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="return_user_by_id">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;br/&gt;&lt;p&gt;&lt;b&gt;Descrição:&lt;/b&gt; Método retorna o objeto usuário através de seu Id.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Parâmetros: &lt;/b&gt;&lt;b&gt;  Id&lt;/b&gt;: tipo String&lt;/p&gt;&lt;ul&gt;&lt;p&gt;&lt;b&gt;Retorno: &lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;Id&lt;/b&gt;: tipo String&lt;/li&gt;&lt;li&gt;&lt;b&gt;Nome&lt;/b&gt;: tipo String&lt;/li&gt;&lt;li&gt;&lt;b&gt;Email&lt;/b&gt;: tipo String&lt;/li&gt;&lt;li&gt;&lt;b&gt;Senha&lt;/b&gt;: tipo String&lt;/li&gt;&lt;/ul&gt;&lt;/ul&gt;&lt;br/&gt;</wsdl:documentation>
@@ -171,6 +417,11 @@
       <wsdl:input message="tns:create_userSoapIn" />
       <wsdl:output message="tns:create_userSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="create_user_facebook">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;br/&gt;&lt;p&gt;&lt;b&gt;Descrição:&lt;/b&gt; Método de inserção de um novo usuário através de login do facebook.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Parâmetros: &lt;/b&gt;&lt;b&gt;  Id&lt;/b&gt;: tipo String, &lt;b&gt;Nome &lt;/b&gt;: tipo String, &lt;b&gt;Email &lt;/b&gt;: tipo String&lt;/p&gt;&lt;ul&gt;&lt;p&gt;&lt;b&gt;Retorno: &lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;Mensagem&lt;/b&gt;: Usuário cadastrado com sucesso.&lt;/li&gt;&lt;/ul&gt;&lt;/ul&gt;&lt;br/&gt;</wsdl:documentation>
+      <wsdl:input message="tns:create_user_facebookSoapIn" />
+      <wsdl:output message="tns:create_user_facebookSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="update_user">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;br/&gt;&lt;p&gt;&lt;b&gt;Descrição:&lt;/b&gt; Método de atualização de um usuário.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Parâmetros: &lt;/b&gt;&lt;b&gt;   Id&lt;/b&gt;: tipo String, &lt;b&gt;Nome&lt;/b&gt;: tipo String, &lt;b&gt;Email &lt;/b&gt;: tipo String, &lt;b&gt;Senha &lt;/b&gt;: tipo String&lt;/p&gt;&lt;ul&gt;&lt;p&gt;&lt;b&gt;Retorno: &lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;Mensagem&lt;/b&gt;: Os dados do usuário foram atualizados com sucesso.&lt;/li&gt;&lt;/ul&gt;&lt;/ul&gt;&lt;br/&gt;</wsdl:documentation>
       <wsdl:input message="tns:update_userSoapIn" />
@@ -181,11 +432,73 @@
       <wsdl:input message="tns:delete_userSoapIn" />
       <wsdl:output message="tns:delete_userSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="create_task_list">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;br/&gt;&lt;p&gt;&lt;b&gt;Descrição:&lt;/b&gt; Método de inserção de uma nova lista.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Parâmetros: &lt;/b&gt;&lt;b&gt;  UsuarioId&lt;/b&gt;: tipo String, &lt;b&gt;Nome &lt;/b&gt;: tipo String, &lt;b&gt;Cor &lt;/b&gt;: tipo String&lt;/p&gt;&lt;ul&gt;&lt;p&gt;&lt;b&gt;Retorno: &lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;Mensagem&lt;/b&gt;: Lista cadastrada com sucesso.&lt;/li&gt;&lt;/ul&gt;&lt;/ul&gt;&lt;br/&gt;</wsdl:documentation>
+      <wsdl:input message="tns:create_task_listSoapIn" />
+      <wsdl:output message="tns:create_task_listSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="create_task">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;br/&gt;&lt;p&gt;&lt;b&gt;Descrição:&lt;/b&gt; Método de inserção de uma nova tarefa.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Parâmetros: &lt;/b&gt;&lt;b&gt;  ListaDeTarefaId&lt;/b&gt;: tipo String, &lt;b&gt;Descrição &lt;/b&gt;: tipo String&lt;/p&gt;, &lt;b&gt;Status &lt;/b&gt;: tipo String&lt;/p&gt;&lt;ul&gt;&lt;p&gt;&lt;b&gt;Retorno: &lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;Mensagem&lt;/b&gt;: Tarefa cadastrada com sucesso.&lt;/li&gt;&lt;/ul&gt;&lt;/ul&gt;&lt;br/&gt;</wsdl:documentation>
+      <wsdl:input message="tns:create_taskSoapIn" />
+      <wsdl:output message="tns:create_taskSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="update_task">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;br/&gt;&lt;p&gt;&lt;b&gt;Descrição:&lt;/b&gt; Método de atualização de uma tarefa.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Parâmetros: &lt;/b&gt;&lt;b&gt;   TarefaId&lt;/b&gt;: tipo String, &lt;b&gt;Status&lt;/b&gt;: tipo String,&lt;/p&gt;&lt;ul&gt;&lt;p&gt;&lt;b&gt;Retorno: &lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;Mensagem&lt;/b&gt;: Tarefa atualizada com sucesso.&lt;/li&gt;&lt;/ul&gt;&lt;/ul&gt;&lt;br/&gt;</wsdl:documentation>
+      <wsdl:input message="tns:update_taskSoapIn" />
+      <wsdl:output message="tns:update_taskSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="update_task_list">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;br/&gt;&lt;p&gt;&lt;b&gt;Descrição:&lt;/b&gt; Método de atualização de uma lista de tarefa.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Parâmetros: &lt;/b&gt;&lt;b&gt;   ListaDeTarefaId&lt;/b&gt;: tipo String, &lt;b&gt;Nome&lt;/b&gt;: tipo String, &lt;b&gt;Cor&lt;/b&gt;: tipo String&lt;/p&gt;&lt;ul&gt;&lt;p&gt;&lt;b&gt;Retorno: &lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;Mensagem&lt;/b&gt;: Tarefa atualizada com sucesso.&lt;/li&gt;&lt;/ul&gt;&lt;/ul&gt;&lt;br/&gt;</wsdl:documentation>
+      <wsdl:input message="tns:update_task_listSoapIn" />
+      <wsdl:output message="tns:update_task_listSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="remove_task_list">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;br/&gt;&lt;p&gt;&lt;b&gt;Descrição:&lt;/b&gt; Método de exclusão de uma lista.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Parâmetros: &lt;/b&gt;&lt;b&gt;   ListaDeTarefaId&lt;/b&gt;: tipo String&lt;/p&gt;&lt;ul&gt;&lt;p&gt;&lt;b&gt;Retorno: &lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;Mensagem&lt;/b&gt;: Tarefa excluída com sucesso.&lt;/li&gt;&lt;/ul&gt;&lt;/ul&gt;&lt;br/&gt;</wsdl:documentation>
+      <wsdl:input message="tns:remove_task_listSoapIn" />
+      <wsdl:output message="tns:remove_task_listSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="user_authenticate">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;br/&gt;&lt;p&gt;&lt;b&gt;Descrição:&lt;/b&gt; Método de localização e autenticação de usuário.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Parâmetros: &lt;/b&gt;&lt;b&gt;   Email&lt;/b&gt;: tipo String, &lt;b&gt;Senha&lt;/b&gt;: tipo String&lt;/p&gt;&lt;ul&gt;&lt;p&gt;&lt;b&gt;Retorno: &lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;Mensagem&lt;/b&gt;: Retorna o usuário.&lt;/li&gt;&lt;/ul&gt;&lt;/ul&gt;&lt;br/&gt;</wsdl:documentation>
+      <wsdl:input message="tns:user_authenticateSoapIn" />
+      <wsdl:output message="tns:user_authenticateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="forgot_password">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;br/&gt;&lt;p&gt;&lt;b&gt;Descrição:&lt;/b&gt; Método de localização do usuário, resetar sua senha e enviar um email com a nova senha.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Parâmetros: &lt;/b&gt;&lt;b&gt;   Email&lt;/b&gt;: tipo String, &lt;b&gt;Senha&lt;/b&gt;: tipo String&lt;/p&gt;&lt;ul&gt;&lt;p&gt;&lt;b&gt;Retorno: &lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;Mensagem&lt;/b&gt;: Retorna o usuário.&lt;/li&gt;&lt;/ul&gt;&lt;/ul&gt;&lt;br/&gt;</wsdl:documentation>
+      <wsdl:input message="tns:forgot_passwordSoapIn" />
+      <wsdl:output message="tns:forgot_passwordSoapOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="webservicewithrestSoap" type="tns:webservicewithrestSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="check_user">
       <soap:operation soapAction="roberto-oliveira/check_user" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="check_user_facebook">
+      <soap:operation soapAction="roberto-oliveira/check_user_facebook" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="check_user_authenticate">
+      <soap:operation soapAction="roberto-oliveira/check_user_authenticate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="check_user_by_email">
+      <soap:operation soapAction="roberto-oliveira/check_user_by_email" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -229,6 +542,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="create_user_facebook">
+      <soap:operation soapAction="roberto-oliveira/create_user_facebook" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="update_user">
       <soap:operation soapAction="roberto-oliveira/update_user" style="document" />
       <wsdl:input>
@@ -247,11 +569,101 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="create_task_list">
+      <soap:operation soapAction="roberto-oliveira/create_task_list" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="create_task">
+      <soap:operation soapAction="roberto-oliveira/create_task" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="update_task">
+      <soap:operation soapAction="roberto-oliveira/update_task" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="update_task_list">
+      <soap:operation soapAction="roberto-oliveira/update_task_list" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="remove_task_list">
+      <soap:operation soapAction="roberto-oliveira/remove_task_list" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="user_authenticate">
+      <soap:operation soapAction="roberto-oliveira/user_authenticate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="forgot_password">
+      <soap:operation soapAction="roberto-oliveira/forgot_password" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="webservicewithrestSoap12" type="tns:webservicewithrestSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="check_user">
       <soap12:operation soapAction="roberto-oliveira/check_user" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="check_user_facebook">
+      <soap12:operation soapAction="roberto-oliveira/check_user_facebook" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="check_user_authenticate">
+      <soap12:operation soapAction="roberto-oliveira/check_user_authenticate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="check_user_by_email">
+      <soap12:operation soapAction="roberto-oliveira/check_user_by_email" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -295,6 +707,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="create_user_facebook">
+      <soap12:operation soapAction="roberto-oliveira/create_user_facebook" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="update_user">
       <soap12:operation soapAction="roberto-oliveira/update_user" style="document" />
       <wsdl:input>
@@ -306,6 +727,69 @@
     </wsdl:operation>
     <wsdl:operation name="delete_user">
       <soap12:operation soapAction="roberto-oliveira/delete_user" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="create_task_list">
+      <soap12:operation soapAction="roberto-oliveira/create_task_list" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="create_task">
+      <soap12:operation soapAction="roberto-oliveira/create_task" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="update_task">
+      <soap12:operation soapAction="roberto-oliveira/update_task" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="update_task_list">
+      <soap12:operation soapAction="roberto-oliveira/update_task_list" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="remove_task_list">
+      <soap12:operation soapAction="roberto-oliveira/remove_task_list" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="user_authenticate">
+      <soap12:operation soapAction="roberto-oliveira/user_authenticate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="forgot_password">
+      <soap12:operation soapAction="roberto-oliveira/forgot_password" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

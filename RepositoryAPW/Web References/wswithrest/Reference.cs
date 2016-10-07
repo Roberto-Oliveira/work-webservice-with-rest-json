@@ -31,6 +31,12 @@ namespace RepositoryAPW.wswithrest {
         
         private System.Threading.SendOrPostCallback check_userOperationCompleted;
         
+        private System.Threading.SendOrPostCallback check_user_facebookOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback check_user_authenticateOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback check_user_by_emailOperationCompleted;
+        
         private System.Threading.SendOrPostCallback return_user_by_idOperationCompleted;
         
         private System.Threading.SendOrPostCallback return_user_by_emailOperationCompleted;
@@ -39,9 +45,25 @@ namespace RepositoryAPW.wswithrest {
         
         private System.Threading.SendOrPostCallback create_userOperationCompleted;
         
+        private System.Threading.SendOrPostCallback create_user_facebookOperationCompleted;
+        
         private System.Threading.SendOrPostCallback update_userOperationCompleted;
         
         private System.Threading.SendOrPostCallback delete_userOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback create_task_listOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback create_taskOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback update_taskOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback update_task_listOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback remove_task_listOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback user_authenticateOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback forgot_passwordOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -85,6 +107,15 @@ namespace RepositoryAPW.wswithrest {
         public event check_userCompletedEventHandler check_userCompleted;
         
         /// <remarks/>
+        public event check_user_facebookCompletedEventHandler check_user_facebookCompleted;
+        
+        /// <remarks/>
+        public event check_user_authenticateCompletedEventHandler check_user_authenticateCompleted;
+        
+        /// <remarks/>
+        public event check_user_by_emailCompletedEventHandler check_user_by_emailCompleted;
+        
+        /// <remarks/>
         public event return_user_by_idCompletedEventHandler return_user_by_idCompleted;
         
         /// <remarks/>
@@ -97,10 +128,34 @@ namespace RepositoryAPW.wswithrest {
         public event create_userCompletedEventHandler create_userCompleted;
         
         /// <remarks/>
+        public event create_user_facebookCompletedEventHandler create_user_facebookCompleted;
+        
+        /// <remarks/>
         public event update_userCompletedEventHandler update_userCompleted;
         
         /// <remarks/>
         public event delete_userCompletedEventHandler delete_userCompleted;
+        
+        /// <remarks/>
+        public event create_task_listCompletedEventHandler create_task_listCompleted;
+        
+        /// <remarks/>
+        public event create_taskCompletedEventHandler create_taskCompleted;
+        
+        /// <remarks/>
+        public event update_taskCompletedEventHandler update_taskCompleted;
+        
+        /// <remarks/>
+        public event update_task_listCompletedEventHandler update_task_listCompleted;
+        
+        /// <remarks/>
+        public event remove_task_listCompletedEventHandler remove_task_listCompleted;
+        
+        /// <remarks/>
+        public event user_authenticateCompletedEventHandler user_authenticateCompleted;
+        
+        /// <remarks/>
+        public event forgot_passwordCompletedEventHandler forgot_passwordCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("roberto-oliveira/check_user", RequestNamespace="roberto-oliveira", ResponseNamespace="roberto-oliveira", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -132,20 +187,109 @@ namespace RepositoryAPW.wswithrest {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("roberto-oliveira/check_user_facebook", RequestNamespace="roberto-oliveira", ResponseNamespace="roberto-oliveira", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool check_user_facebook(string email) {
+            object[] results = this.Invoke("check_user_facebook", new object[] {
+                        email});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void check_user_facebookAsync(string email) {
+            this.check_user_facebookAsync(email, null);
+        }
+        
+        /// <remarks/>
+        public void check_user_facebookAsync(string email, object userState) {
+            if ((this.check_user_facebookOperationCompleted == null)) {
+                this.check_user_facebookOperationCompleted = new System.Threading.SendOrPostCallback(this.Oncheck_user_facebookOperationCompleted);
+            }
+            this.InvokeAsync("check_user_facebook", new object[] {
+                        email}, this.check_user_facebookOperationCompleted, userState);
+        }
+        
+        private void Oncheck_user_facebookOperationCompleted(object arg) {
+            if ((this.check_user_facebookCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.check_user_facebookCompleted(this, new check_user_facebookCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("roberto-oliveira/check_user_authenticate", RequestNamespace="roberto-oliveira", ResponseNamespace="roberto-oliveira", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool check_user_authenticate(string email, string senha) {
+            object[] results = this.Invoke("check_user_authenticate", new object[] {
+                        email,
+                        senha});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void check_user_authenticateAsync(string email, string senha) {
+            this.check_user_authenticateAsync(email, senha, null);
+        }
+        
+        /// <remarks/>
+        public void check_user_authenticateAsync(string email, string senha, object userState) {
+            if ((this.check_user_authenticateOperationCompleted == null)) {
+                this.check_user_authenticateOperationCompleted = new System.Threading.SendOrPostCallback(this.Oncheck_user_authenticateOperationCompleted);
+            }
+            this.InvokeAsync("check_user_authenticate", new object[] {
+                        email,
+                        senha}, this.check_user_authenticateOperationCompleted, userState);
+        }
+        
+        private void Oncheck_user_authenticateOperationCompleted(object arg) {
+            if ((this.check_user_authenticateCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.check_user_authenticateCompleted(this, new check_user_authenticateCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("roberto-oliveira/check_user_by_email", RequestNamespace="roberto-oliveira", ResponseNamespace="roberto-oliveira", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool check_user_by_email(string email) {
+            object[] results = this.Invoke("check_user_by_email", new object[] {
+                        email});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void check_user_by_emailAsync(string email) {
+            this.check_user_by_emailAsync(email, null);
+        }
+        
+        /// <remarks/>
+        public void check_user_by_emailAsync(string email, object userState) {
+            if ((this.check_user_by_emailOperationCompleted == null)) {
+                this.check_user_by_emailOperationCompleted = new System.Threading.SendOrPostCallback(this.Oncheck_user_by_emailOperationCompleted);
+            }
+            this.InvokeAsync("check_user_by_email", new object[] {
+                        email}, this.check_user_by_emailOperationCompleted, userState);
+        }
+        
+        private void Oncheck_user_by_emailOperationCompleted(object arg) {
+            if ((this.check_user_by_emailCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.check_user_by_emailCompleted(this, new check_user_by_emailCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("roberto-oliveira/return_user_by_id", RequestNamespace="roberto-oliveira", ResponseNamespace="roberto-oliveira", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string return_user_by_id(string id) {
+        public string return_user_by_id(int id) {
             object[] results = this.Invoke("return_user_by_id", new object[] {
                         id});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void return_user_by_idAsync(string id) {
+        public void return_user_by_idAsync(int id) {
             this.return_user_by_idAsync(id, null);
         }
         
         /// <remarks/>
-        public void return_user_by_idAsync(string id, object userState) {
+        public void return_user_by_idAsync(int id, object userState) {
             if ((this.return_user_by_idOperationCompleted == null)) {
                 this.return_user_by_idOperationCompleted = new System.Threading.SendOrPostCallback(this.Onreturn_user_by_idOperationCompleted);
             }
@@ -250,6 +394,39 @@ namespace RepositoryAPW.wswithrest {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("roberto-oliveira/create_user_facebook", RequestNamespace="roberto-oliveira", ResponseNamespace="roberto-oliveira", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string create_user_facebook(string _id, string _nome, string _email) {
+            object[] results = this.Invoke("create_user_facebook", new object[] {
+                        _id,
+                        _nome,
+                        _email});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void create_user_facebookAsync(string _id, string _nome, string _email) {
+            this.create_user_facebookAsync(_id, _nome, _email, null);
+        }
+        
+        /// <remarks/>
+        public void create_user_facebookAsync(string _id, string _nome, string _email, object userState) {
+            if ((this.create_user_facebookOperationCompleted == null)) {
+                this.create_user_facebookOperationCompleted = new System.Threading.SendOrPostCallback(this.Oncreate_user_facebookOperationCompleted);
+            }
+            this.InvokeAsync("create_user_facebook", new object[] {
+                        _id,
+                        _nome,
+                        _email}, this.create_user_facebookOperationCompleted, userState);
+        }
+        
+        private void Oncreate_user_facebookOperationCompleted(object arg) {
+            if ((this.create_user_facebookCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.create_user_facebookCompleted(this, new create_user_facebookCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("roberto-oliveira/update_user", RequestNamespace="roberto-oliveira", ResponseNamespace="roberto-oliveira", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public string update_user(int id, string nome, string email, string senha) {
             object[] results = this.Invoke("update_user", new object[] {
@@ -286,30 +463,249 @@ namespace RepositoryAPW.wswithrest {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("roberto-oliveira/delete_user", RequestNamespace="roberto-oliveira", ResponseNamespace="roberto-oliveira", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string delete_user(int Id) {
+        public string delete_user(int id) {
             object[] results = this.Invoke("delete_user", new object[] {
-                        Id});
+                        id});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void delete_userAsync(int Id) {
-            this.delete_userAsync(Id, null);
+        public void delete_userAsync(int id) {
+            this.delete_userAsync(id, null);
         }
         
         /// <remarks/>
-        public void delete_userAsync(int Id, object userState) {
+        public void delete_userAsync(int id, object userState) {
             if ((this.delete_userOperationCompleted == null)) {
                 this.delete_userOperationCompleted = new System.Threading.SendOrPostCallback(this.Ondelete_userOperationCompleted);
             }
             this.InvokeAsync("delete_user", new object[] {
-                        Id}, this.delete_userOperationCompleted, userState);
+                        id}, this.delete_userOperationCompleted, userState);
         }
         
         private void Ondelete_userOperationCompleted(object arg) {
             if ((this.delete_userCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.delete_userCompleted(this, new delete_userCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("roberto-oliveira/create_task_list", RequestNamespace="roberto-oliveira", ResponseNamespace="roberto-oliveira", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string create_task_list(string UsuarioId, string nome, string cor) {
+            object[] results = this.Invoke("create_task_list", new object[] {
+                        UsuarioId,
+                        nome,
+                        cor});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void create_task_listAsync(string UsuarioId, string nome, string cor) {
+            this.create_task_listAsync(UsuarioId, nome, cor, null);
+        }
+        
+        /// <remarks/>
+        public void create_task_listAsync(string UsuarioId, string nome, string cor, object userState) {
+            if ((this.create_task_listOperationCompleted == null)) {
+                this.create_task_listOperationCompleted = new System.Threading.SendOrPostCallback(this.Oncreate_task_listOperationCompleted);
+            }
+            this.InvokeAsync("create_task_list", new object[] {
+                        UsuarioId,
+                        nome,
+                        cor}, this.create_task_listOperationCompleted, userState);
+        }
+        
+        private void Oncreate_task_listOperationCompleted(object arg) {
+            if ((this.create_task_listCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.create_task_listCompleted(this, new create_task_listCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("roberto-oliveira/create_task", RequestNamespace="roberto-oliveira", ResponseNamespace="roberto-oliveira", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string create_task(string ListaDeTarefaId, string descricao, string status) {
+            object[] results = this.Invoke("create_task", new object[] {
+                        ListaDeTarefaId,
+                        descricao,
+                        status});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void create_taskAsync(string ListaDeTarefaId, string descricao, string status) {
+            this.create_taskAsync(ListaDeTarefaId, descricao, status, null);
+        }
+        
+        /// <remarks/>
+        public void create_taskAsync(string ListaDeTarefaId, string descricao, string status, object userState) {
+            if ((this.create_taskOperationCompleted == null)) {
+                this.create_taskOperationCompleted = new System.Threading.SendOrPostCallback(this.Oncreate_taskOperationCompleted);
+            }
+            this.InvokeAsync("create_task", new object[] {
+                        ListaDeTarefaId,
+                        descricao,
+                        status}, this.create_taskOperationCompleted, userState);
+        }
+        
+        private void Oncreate_taskOperationCompleted(object arg) {
+            if ((this.create_taskCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.create_taskCompleted(this, new create_taskCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("roberto-oliveira/update_task", RequestNamespace="roberto-oliveira", ResponseNamespace="roberto-oliveira", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string update_task(int TarefaId, string status) {
+            object[] results = this.Invoke("update_task", new object[] {
+                        TarefaId,
+                        status});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void update_taskAsync(int TarefaId, string status) {
+            this.update_taskAsync(TarefaId, status, null);
+        }
+        
+        /// <remarks/>
+        public void update_taskAsync(int TarefaId, string status, object userState) {
+            if ((this.update_taskOperationCompleted == null)) {
+                this.update_taskOperationCompleted = new System.Threading.SendOrPostCallback(this.Onupdate_taskOperationCompleted);
+            }
+            this.InvokeAsync("update_task", new object[] {
+                        TarefaId,
+                        status}, this.update_taskOperationCompleted, userState);
+        }
+        
+        private void Onupdate_taskOperationCompleted(object arg) {
+            if ((this.update_taskCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.update_taskCompleted(this, new update_taskCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("roberto-oliveira/update_task_list", RequestNamespace="roberto-oliveira", ResponseNamespace="roberto-oliveira", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string update_task_list(int ListaDeTarefaId, string nome, string cor) {
+            object[] results = this.Invoke("update_task_list", new object[] {
+                        ListaDeTarefaId,
+                        nome,
+                        cor});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void update_task_listAsync(int ListaDeTarefaId, string nome, string cor) {
+            this.update_task_listAsync(ListaDeTarefaId, nome, cor, null);
+        }
+        
+        /// <remarks/>
+        public void update_task_listAsync(int ListaDeTarefaId, string nome, string cor, object userState) {
+            if ((this.update_task_listOperationCompleted == null)) {
+                this.update_task_listOperationCompleted = new System.Threading.SendOrPostCallback(this.Onupdate_task_listOperationCompleted);
+            }
+            this.InvokeAsync("update_task_list", new object[] {
+                        ListaDeTarefaId,
+                        nome,
+                        cor}, this.update_task_listOperationCompleted, userState);
+        }
+        
+        private void Onupdate_task_listOperationCompleted(object arg) {
+            if ((this.update_task_listCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.update_task_listCompleted(this, new update_task_listCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("roberto-oliveira/remove_task_list", RequestNamespace="roberto-oliveira", ResponseNamespace="roberto-oliveira", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string remove_task_list(int ListaDeTarefaId) {
+            object[] results = this.Invoke("remove_task_list", new object[] {
+                        ListaDeTarefaId});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void remove_task_listAsync(int ListaDeTarefaId) {
+            this.remove_task_listAsync(ListaDeTarefaId, null);
+        }
+        
+        /// <remarks/>
+        public void remove_task_listAsync(int ListaDeTarefaId, object userState) {
+            if ((this.remove_task_listOperationCompleted == null)) {
+                this.remove_task_listOperationCompleted = new System.Threading.SendOrPostCallback(this.Onremove_task_listOperationCompleted);
+            }
+            this.InvokeAsync("remove_task_list", new object[] {
+                        ListaDeTarefaId}, this.remove_task_listOperationCompleted, userState);
+        }
+        
+        private void Onremove_task_listOperationCompleted(object arg) {
+            if ((this.remove_task_listCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.remove_task_listCompleted(this, new remove_task_listCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("roberto-oliveira/user_authenticate", RequestNamespace="roberto-oliveira", ResponseNamespace="roberto-oliveira", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string user_authenticate(string email, string senha) {
+            object[] results = this.Invoke("user_authenticate", new object[] {
+                        email,
+                        senha});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void user_authenticateAsync(string email, string senha) {
+            this.user_authenticateAsync(email, senha, null);
+        }
+        
+        /// <remarks/>
+        public void user_authenticateAsync(string email, string senha, object userState) {
+            if ((this.user_authenticateOperationCompleted == null)) {
+                this.user_authenticateOperationCompleted = new System.Threading.SendOrPostCallback(this.Onuser_authenticateOperationCompleted);
+            }
+            this.InvokeAsync("user_authenticate", new object[] {
+                        email,
+                        senha}, this.user_authenticateOperationCompleted, userState);
+        }
+        
+        private void Onuser_authenticateOperationCompleted(object arg) {
+            if ((this.user_authenticateCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.user_authenticateCompleted(this, new user_authenticateCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("roberto-oliveira/forgot_password", RequestNamespace="roberto-oliveira", ResponseNamespace="roberto-oliveira", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string forgot_password(string email) {
+            object[] results = this.Invoke("forgot_password", new object[] {
+                        email});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void forgot_passwordAsync(string email) {
+            this.forgot_passwordAsync(email, null);
+        }
+        
+        /// <remarks/>
+        public void forgot_passwordAsync(string email, object userState) {
+            if ((this.forgot_passwordOperationCompleted == null)) {
+                this.forgot_passwordOperationCompleted = new System.Threading.SendOrPostCallback(this.Onforgot_passwordOperationCompleted);
+            }
+            this.InvokeAsync("forgot_password", new object[] {
+                        email}, this.forgot_passwordOperationCompleted, userState);
+        }
+        
+        private void Onforgot_passwordOperationCompleted(object arg) {
+            if ((this.forgot_passwordCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.forgot_passwordCompleted(this, new forgot_passwordCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -345,6 +741,84 @@ namespace RepositoryAPW.wswithrest {
         private object[] results;
         
         internal check_userCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void check_user_facebookCompletedEventHandler(object sender, check_user_facebookCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class check_user_facebookCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal check_user_facebookCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void check_user_authenticateCompletedEventHandler(object sender, check_user_authenticateCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class check_user_authenticateCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal check_user_authenticateCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void check_user_by_emailCompletedEventHandler(object sender, check_user_by_emailCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class check_user_by_emailCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal check_user_by_emailCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -464,6 +938,32 @@ namespace RepositoryAPW.wswithrest {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void create_user_facebookCompletedEventHandler(object sender, create_user_facebookCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class create_user_facebookCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal create_user_facebookCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     public delegate void update_userCompletedEventHandler(object sender, update_userCompletedEventArgs e);
     
     /// <remarks/>
@@ -501,6 +1001,188 @@ namespace RepositoryAPW.wswithrest {
         private object[] results;
         
         internal delete_userCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void create_task_listCompletedEventHandler(object sender, create_task_listCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class create_task_listCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal create_task_listCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void create_taskCompletedEventHandler(object sender, create_taskCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class create_taskCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal create_taskCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void update_taskCompletedEventHandler(object sender, update_taskCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class update_taskCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal update_taskCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void update_task_listCompletedEventHandler(object sender, update_task_listCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class update_task_listCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal update_task_listCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void remove_task_listCompletedEventHandler(object sender, remove_task_listCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class remove_task_listCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal remove_task_listCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void user_authenticateCompletedEventHandler(object sender, user_authenticateCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class user_authenticateCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal user_authenticateCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void forgot_passwordCompletedEventHandler(object sender, forgot_passwordCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class forgot_passwordCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal forgot_passwordCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

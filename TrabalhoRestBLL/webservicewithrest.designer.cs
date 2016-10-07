@@ -30,18 +30,15 @@ namespace TrabalhoRestBLL
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertFacebookUser(FacebookUser instance);
-    partial void UpdateFacebookUser(FacebookUser instance);
-    partial void DeleteFacebookUser(FacebookUser instance);
-    partial void InsertUsuario(Usuario instance);
-    partial void UpdateUsuario(Usuario instance);
-    partial void DeleteUsuario(Usuario instance);
     partial void InsertListaTarefa(ListaTarefa instance);
     partial void UpdateListaTarefa(ListaTarefa instance);
     partial void DeleteListaTarefa(ListaTarefa instance);
     partial void InsertTarefa(Tarefa instance);
     partial void UpdateTarefa(Tarefa instance);
     partial void DeleteTarefa(Tarefa instance);
+    partial void InsertUsuario(Usuario instance);
+    partial void UpdateUsuario(Usuario instance);
+    partial void DeleteUsuario(Usuario instance);
     #endregion
 		
 		public webservicewithrestDataContext() : 
@@ -74,11 +71,27 @@ namespace TrabalhoRestBLL
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<FacebookUser> FacebookUsers
+		public System.Data.Linq.Table<ListaTarefa> ListaTarefas
 		{
 			get
 			{
-				return this.GetTable<FacebookUser>();
+				return this.GetTable<ListaTarefa>();
+			}
+		}
+		
+		public System.Data.Linq.Table<UsuarioFacebook> UsuarioFacebooks
+		{
+			get
+			{
+				return this.GetTable<UsuarioFacebook>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Tarefa> Tarefas
+		{
+			get
+			{
+				return this.GetTable<Tarefa>();
 			}
 		}
 		
@@ -90,416 +103,12 @@ namespace TrabalhoRestBLL
 			}
 		}
 		
-		public System.Data.Linq.Table<ListaTarefa> ListaTarefas
+		public System.Data.Linq.Table<UsuarioComum> UsuarioComums
 		{
 			get
 			{
-				return this.GetTable<ListaTarefa>();
+				return this.GetTable<UsuarioComum>();
 			}
-		}
-		
-		public System.Data.Linq.Table<Tarefa> Tarefas
-		{
-			get
-			{
-				return this.GetTable<Tarefa>();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.FacebookUser")]
-	public partial class FacebookUser : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private string _Id;
-		
-		private string _first_name;
-		
-		private string _last_name;
-		
-		private string _link;
-		
-		private string _username;
-		
-		private string _gender;
-		
-		private string _locale;
-		
-		private EntitySet<ListaTarefa> _ListaTarefas;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(string value);
-    partial void OnIdChanged();
-    partial void Onfirst_nameChanging(string value);
-    partial void Onfirst_nameChanged();
-    partial void Onlast_nameChanging(string value);
-    partial void Onlast_nameChanged();
-    partial void OnlinkChanging(string value);
-    partial void OnlinkChanged();
-    partial void OnusernameChanging(string value);
-    partial void OnusernameChanged();
-    partial void OngenderChanging(string value);
-    partial void OngenderChanged();
-    partial void OnlocaleChanging(string value);
-    partial void OnlocaleChanged();
-    #endregion
-		
-		public FacebookUser()
-		{
-			this._ListaTarefas = new EntitySet<ListaTarefa>(new Action<ListaTarefa>(this.attach_ListaTarefas), new Action<ListaTarefa>(this.detach_ListaTarefas));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="VarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_first_name", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
-		public string first_name
-		{
-			get
-			{
-				return this._first_name;
-			}
-			set
-			{
-				if ((this._first_name != value))
-				{
-					this.Onfirst_nameChanging(value);
-					this.SendPropertyChanging();
-					this._first_name = value;
-					this.SendPropertyChanged("first_name");
-					this.Onfirst_nameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_last_name", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
-		public string last_name
-		{
-			get
-			{
-				return this._last_name;
-			}
-			set
-			{
-				if ((this._last_name != value))
-				{
-					this.Onlast_nameChanging(value);
-					this.SendPropertyChanging();
-					this._last_name = value;
-					this.SendPropertyChanged("last_name");
-					this.Onlast_nameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_link", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string link
-		{
-			get
-			{
-				return this._link;
-			}
-			set
-			{
-				if ((this._link != value))
-				{
-					this.OnlinkChanging(value);
-					this.SendPropertyChanging();
-					this._link = value;
-					this.SendPropertyChanged("link");
-					this.OnlinkChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_username", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
-		public string username
-		{
-			get
-			{
-				return this._username;
-			}
-			set
-			{
-				if ((this._username != value))
-				{
-					this.OnusernameChanging(value);
-					this.SendPropertyChanging();
-					this._username = value;
-					this.SendPropertyChanged("username");
-					this.OnusernameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_gender", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
-		public string gender
-		{
-			get
-			{
-				return this._gender;
-			}
-			set
-			{
-				if ((this._gender != value))
-				{
-					this.OngenderChanging(value);
-					this.SendPropertyChanging();
-					this._gender = value;
-					this.SendPropertyChanged("gender");
-					this.OngenderChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_locale", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
-		public string locale
-		{
-			get
-			{
-				return this._locale;
-			}
-			set
-			{
-				if ((this._locale != value))
-				{
-					this.OnlocaleChanging(value);
-					this.SendPropertyChanging();
-					this._locale = value;
-					this.SendPropertyChanged("locale");
-					this.OnlocaleChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="FacebookUser_ListaTarefa", Storage="_ListaTarefas", ThisKey="Id", OtherKey="FacebookUserId")]
-		public EntitySet<ListaTarefa> ListaTarefas
-		{
-			get
-			{
-				return this._ListaTarefas;
-			}
-			set
-			{
-				this._ListaTarefas.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_ListaTarefas(ListaTarefa entity)
-		{
-			this.SendPropertyChanging();
-			entity.FacebookUser = this;
-		}
-		
-		private void detach_ListaTarefas(ListaTarefa entity)
-		{
-			this.SendPropertyChanging();
-			entity.FacebookUser = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Usuario")]
-	public partial class Usuario : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private string _Nome;
-		
-		private string _Email;
-		
-		private string _Senha;
-		
-		private EntitySet<ListaTarefa> _ListaTarefas;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnNomeChanging(string value);
-    partial void OnNomeChanged();
-    partial void OnEmailChanging(string value);
-    partial void OnEmailChanged();
-    partial void OnSenhaChanging(string value);
-    partial void OnSenhaChanged();
-    #endregion
-		
-		public Usuario()
-		{
-			this._ListaTarefas = new EntitySet<ListaTarefa>(new Action<ListaTarefa>(this.attach_ListaTarefas), new Action<ListaTarefa>(this.detach_ListaTarefas));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nome", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Nome
-		{
-			get
-			{
-				return this._Nome;
-			}
-			set
-			{
-				if ((this._Nome != value))
-				{
-					this.OnNomeChanging(value);
-					this.SendPropertyChanging();
-					this._Nome = value;
-					this.SendPropertyChanged("Nome");
-					this.OnNomeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Email
-		{
-			get
-			{
-				return this._Email;
-			}
-			set
-			{
-				if ((this._Email != value))
-				{
-					this.OnEmailChanging(value);
-					this.SendPropertyChanging();
-					this._Email = value;
-					this.SendPropertyChanged("Email");
-					this.OnEmailChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Senha", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
-		public string Senha
-		{
-			get
-			{
-				return this._Senha;
-			}
-			set
-			{
-				if ((this._Senha != value))
-				{
-					this.OnSenhaChanging(value);
-					this.SendPropertyChanging();
-					this._Senha = value;
-					this.SendPropertyChanged("Senha");
-					this.OnSenhaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Usuario_ListaTarefa", Storage="_ListaTarefas", ThisKey="Id", OtherKey="UsuarioId")]
-		public EntitySet<ListaTarefa> ListaTarefas
-		{
-			get
-			{
-				return this._ListaTarefas;
-			}
-			set
-			{
-				this._ListaTarefas.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_ListaTarefas(ListaTarefa entity)
-		{
-			this.SendPropertyChanging();
-			entity.Usuario = this;
-		}
-		
-		private void detach_ListaTarefas(ListaTarefa entity)
-		{
-			this.SendPropertyChanging();
-			entity.Usuario = null;
 		}
 	}
 	
@@ -517,11 +126,7 @@ namespace TrabalhoRestBLL
 		
 		private System.Nullable<int> _UsuarioId;
 		
-		private string _FacebookUserId;
-		
 		private EntitySet<Tarefa> _Tarefas;
-		
-		private EntityRef<FacebookUser> _FacebookUser;
 		
 		private EntityRef<Usuario> _Usuario;
 		
@@ -537,14 +142,11 @@ namespace TrabalhoRestBLL
     partial void OnCorChanged();
     partial void OnUsuarioIdChanging(System.Nullable<int> value);
     partial void OnUsuarioIdChanged();
-    partial void OnFacebookUserIdChanging(string value);
-    partial void OnFacebookUserIdChanged();
     #endregion
 		
 		public ListaTarefa()
 		{
 			this._Tarefas = new EntitySet<Tarefa>(new Action<Tarefa>(this.attach_Tarefas), new Action<Tarefa>(this.detach_Tarefas));
-			this._FacebookUser = default(EntityRef<FacebookUser>);
 			this._Usuario = default(EntityRef<Usuario>);
 			OnCreated();
 		}
@@ -633,30 +235,6 @@ namespace TrabalhoRestBLL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FacebookUserId", DbType="VarChar(50)")]
-		public string FacebookUserId
-		{
-			get
-			{
-				return this._FacebookUserId;
-			}
-			set
-			{
-				if ((this._FacebookUserId != value))
-				{
-					if (this._FacebookUser.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnFacebookUserIdChanging(value);
-					this.SendPropertyChanging();
-					this._FacebookUserId = value;
-					this.SendPropertyChanged("FacebookUserId");
-					this.OnFacebookUserIdChanged();
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ListaTarefa_Tarefa", Storage="_Tarefas", ThisKey="Id", OtherKey="ListaTarefaId")]
 		public EntitySet<Tarefa> Tarefas
 		{
@@ -667,40 +245,6 @@ namespace TrabalhoRestBLL
 			set
 			{
 				this._Tarefas.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="FacebookUser_ListaTarefa", Storage="_FacebookUser", ThisKey="FacebookUserId", OtherKey="Id", IsForeignKey=true)]
-		public FacebookUser FacebookUser
-		{
-			get
-			{
-				return this._FacebookUser.Entity;
-			}
-			set
-			{
-				FacebookUser previousValue = this._FacebookUser.Entity;
-				if (((previousValue != value) 
-							|| (this._FacebookUser.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._FacebookUser.Entity = null;
-						previousValue.ListaTarefas.Remove(this);
-					}
-					this._FacebookUser.Entity = value;
-					if ((value != null))
-					{
-						value.ListaTarefas.Add(this);
-						this._FacebookUserId = value.Id;
-					}
-					else
-					{
-						this._FacebookUserId = default(string);
-					}
-					this.SendPropertyChanged("FacebookUser");
-				}
 			}
 		}
 		
@@ -768,6 +312,51 @@ namespace TrabalhoRestBLL
 		{
 			this.SendPropertyChanging();
 			entity.ListaTarefa = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.UsuarioFacebook")]
+	public partial class UsuarioFacebook
+	{
+		
+		private int _Id;
+		
+		private System.Nullable<int> _UsuarioId;
+		
+		public UsuarioFacebook()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL")]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this._Id = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UsuarioId", DbType="Int")]
+		public System.Nullable<int> UsuarioId
+		{
+			get
+			{
+				return this._UsuarioId;
+			}
+			set
+			{
+				if ((this._UsuarioId != value))
+				{
+					this._UsuarioId = value;
+				}
+			}
 		}
 	}
 	
@@ -942,6 +531,213 @@ namespace TrabalhoRestBLL
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Usuario")]
+	public partial class Usuario : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _Nome;
+		
+		private string _Email;
+		
+		private string _Senha;
+		
+		private EntitySet<ListaTarefa> _ListaTarefas;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnNomeChanging(string value);
+    partial void OnNomeChanged();
+    partial void OnEmailChanging(string value);
+    partial void OnEmailChanged();
+    partial void OnSenhaChanging(string value);
+    partial void OnSenhaChanged();
+    #endregion
+		
+		public Usuario()
+		{
+			this._ListaTarefas = new EntitySet<ListaTarefa>(new Action<ListaTarefa>(this.attach_ListaTarefas), new Action<ListaTarefa>(this.detach_ListaTarefas));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nome", DbType="VarChar(50)")]
+		public string Nome
+		{
+			get
+			{
+				return this._Nome;
+			}
+			set
+			{
+				if ((this._Nome != value))
+				{
+					this.OnNomeChanging(value);
+					this.SendPropertyChanging();
+					this._Nome = value;
+					this.SendPropertyChanged("Nome");
+					this.OnNomeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="VarChar(50)")]
+		public string Email
+		{
+			get
+			{
+				return this._Email;
+			}
+			set
+			{
+				if ((this._Email != value))
+				{
+					this.OnEmailChanging(value);
+					this.SendPropertyChanging();
+					this._Email = value;
+					this.SendPropertyChanged("Email");
+					this.OnEmailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Senha", DbType="VarChar(50)")]
+		public string Senha
+		{
+			get
+			{
+				return this._Senha;
+			}
+			set
+			{
+				if ((this._Senha != value))
+				{
+					this.OnSenhaChanging(value);
+					this.SendPropertyChanging();
+					this._Senha = value;
+					this.SendPropertyChanged("Senha");
+					this.OnSenhaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Usuario_ListaTarefa", Storage="_ListaTarefas", ThisKey="Id", OtherKey="UsuarioId")]
+		public EntitySet<ListaTarefa> ListaTarefas
+		{
+			get
+			{
+				return this._ListaTarefas;
+			}
+			set
+			{
+				this._ListaTarefas.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_ListaTarefas(ListaTarefa entity)
+		{
+			this.SendPropertyChanging();
+			entity.Usuario = this;
+		}
+		
+		private void detach_ListaTarefas(ListaTarefa entity)
+		{
+			this.SendPropertyChanging();
+			entity.Usuario = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.UsuarioComum")]
+	public partial class UsuarioComum
+	{
+		
+		private int _Id;
+		
+		private System.Nullable<int> _UsuarioId;
+		
+		public UsuarioComum()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL")]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this._Id = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UsuarioId", DbType="Int")]
+		public System.Nullable<int> UsuarioId
+		{
+			get
+			{
+				return this._UsuarioId;
+			}
+			set
+			{
+				if ((this._UsuarioId != value))
+				{
+					this._UsuarioId = value;
+				}
 			}
 		}
 	}
