@@ -16,10 +16,14 @@ namespace RepositoryAPW.pages
             if (Request.QueryString["code"] != "")
             {
                 var ws = new webservicewithrest();
-
                 var obj = GetFacebookUser(Request.QueryString["code"]);
 
-                ws.create_user(obj.Nome, obj.Email, obj.Senha);
+                if (!ws.check_user_facebook(obj.Email))
+                {
+                    ws.create_user_facebook(obj.Name, obj.Email);
+                }
+
+                Session["user"] = obj;
 
                 Response.Redirect("controle-de-usuarios.aspx");
             }

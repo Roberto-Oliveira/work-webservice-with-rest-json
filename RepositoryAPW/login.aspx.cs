@@ -1,10 +1,11 @@
-﻿namespace RepositoryAPW
-{
-    using RepositoryBLL;
-    using System;
-    using System.DirectoryServices;
-    using System.Web.UI;
+﻿using System.Configuration;
+using RepositoryBLL;
+using System;
+using System.DirectoryServices;
+using System.Web.UI;
 
+namespace RepositoryAPW
+{
     public partial class login : Page
     {
         protected void Page_Load(object sender, EventArgs e) { }

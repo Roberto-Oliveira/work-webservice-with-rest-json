@@ -99,10 +99,12 @@
     <Content Include="fonts\Roboto\Roboto-Thin.woff" />
     <Content Include="fonts\Roboto\Roboto-Thin.woff2" />
     <Content Include="masters\Mestre.Master" />
+    <None Include="Properties\PublishProfiles\workwebservice.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Content Include="pages\authenticate.aspx" />
     <Content Include="pages\controle-de-usuarios.aspx" />
     <Content Include="pages\Default.aspx" />
     <Content Include="pages\user.aspx" />
@@ -147,6 +149,13 @@
     </Compile>
     <Compile Include="masters\Mestre.Master.designer.cs">
       <DependentUpon>Mestre.Master</DependentUpon>
+    </Compile>
+    <Compile Include="pages\authenticate.aspx.cs">
+      <DependentUpon>authenticate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\authenticate.aspx.designer.cs">
+      <DependentUpon>authenticate.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\controle-de-usuarios.aspx.cs">
       <DependentUpon>controle-de-usuarios.aspx</DependentUpon>

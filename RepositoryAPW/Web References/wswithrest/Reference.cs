@@ -395,26 +395,24 @@ namespace RepositoryAPW.wswithrest {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("roberto-oliveira/create_user_facebook", RequestNamespace="roberto-oliveira", ResponseNamespace="roberto-oliveira", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string create_user_facebook(string _id, string _nome, string _email) {
+        public string create_user_facebook(string _nome, string _email) {
             object[] results = this.Invoke("create_user_facebook", new object[] {
-                        _id,
                         _nome,
                         _email});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void create_user_facebookAsync(string _id, string _nome, string _email) {
-            this.create_user_facebookAsync(_id, _nome, _email, null);
+        public void create_user_facebookAsync(string _nome, string _email) {
+            this.create_user_facebookAsync(_nome, _email, null);
         }
         
         /// <remarks/>
-        public void create_user_facebookAsync(string _id, string _nome, string _email, object userState) {
+        public void create_user_facebookAsync(string _nome, string _email, object userState) {
             if ((this.create_user_facebookOperationCompleted == null)) {
                 this.create_user_facebookOperationCompleted = new System.Threading.SendOrPostCallback(this.Oncreate_user_facebookOperationCompleted);
             }
             this.InvokeAsync("create_user_facebook", new object[] {
-                        _id,
                         _nome,
                         _email}, this.create_user_facebookOperationCompleted, userState);
         }
@@ -492,7 +490,7 @@ namespace RepositoryAPW.wswithrest {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("roberto-oliveira/create_task_list", RequestNamespace="roberto-oliveira", ResponseNamespace="roberto-oliveira", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string create_task_list(string UsuarioId, string nome, string cor) {
+        public string create_task_list(int UsuarioId, string nome, string cor) {
             object[] results = this.Invoke("create_task_list", new object[] {
                         UsuarioId,
                         nome,
@@ -501,12 +499,12 @@ namespace RepositoryAPW.wswithrest {
         }
         
         /// <remarks/>
-        public void create_task_listAsync(string UsuarioId, string nome, string cor) {
+        public void create_task_listAsync(int UsuarioId, string nome, string cor) {
             this.create_task_listAsync(UsuarioId, nome, cor, null);
         }
         
         /// <remarks/>
-        public void create_task_listAsync(string UsuarioId, string nome, string cor, object userState) {
+        public void create_task_listAsync(int UsuarioId, string nome, string cor, object userState) {
             if ((this.create_task_listOperationCompleted == null)) {
                 this.create_task_listOperationCompleted = new System.Threading.SendOrPostCallback(this.Oncreate_task_listOperationCompleted);
             }

@@ -2,62 +2,36 @@
 <ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="webservicewithrest">
   <DataContextMoniker Name="/webservicewithrestDataContext" />
   <nestedChildShapes>
-    <classShape Id="99992e3d-4b6d-47cf-bf49-0d666e9c3e97" absoluteBounds="3.5, 4.75, 2, 1.4248478190104166">
+    <classShape Id="c5b60de4-c15d-4c11-848a-ffbd7f48b4a0" absoluteBounds="3.5, 1, 2, 1.4248478190104166">
       <DataClassMoniker Name="/webservicewithrestDataContext/ListaTarefa" />
       <nestedChildShapes>
-        <elementListCompartment Id="68a425fa-4aaf-4005-84a7-c553c2afbcae" absoluteBounds="3.515, 5.21, 1.9700000000000002, 0.86484781901041674" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="03a0b9ef-cf88-41cf-9220-82297613cc44" absoluteBounds="3.515, 1.46, 1.9700000000000002, 0.86484781901041674" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="f9535f22-559b-4a81-a1ba-ca961e16a99d" absoluteBounds="3.5, 1.125, 2, 1.0961531575520835">
-      <DataClassMoniker Name="/webservicewithrestDataContext/UsuarioFacebook" />
-      <nestedChildShapes>
-        <elementListCompartment Id="7f8685f1-dc7f-4de6-8d47-5e48d232f582" absoluteBounds="3.515, 1.585, 1.9700000000000002, 0.53615315755208326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="97d6ea3f-b62a-420d-878c-a6420a61dd97" absoluteBounds="6.25, 4.75, 2, 1.4248478190104166">
-      <DataClassMoniker Name="/webservicewithrestDataContext/Tarefa" />
-      <nestedChildShapes>
-        <elementListCompartment Id="46252211-5781-4a81-b0bb-0b119423aedc" absoluteBounds="6.265, 5.21, 1.9700000000000002, 0.86484781901041674" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="c8ec211b-3037-4635-9382-f4792edbbffa" absoluteBounds="0.75, 2.875, 2, 1.4248478190104166">
+    <classShape Id="1dbff2f7-b878-4c92-bdaa-502d99b713e2" absoluteBounds="0.75, 0.875, 2, 1.5891951497395833">
       <DataClassMoniker Name="/webservicewithrestDataContext/Usuario" />
       <nestedChildShapes>
-        <elementListCompartment Id="bf440895-8378-4936-93c3-f16eca77181e" absoluteBounds="0.765, 3.335, 1.9700000000000002, 0.86484781901041674" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="09080dec-3f9e-43b7-b025-dac40b2f585b" absoluteBounds="0.765, 1.335, 1.9700000000000002, 1.0291951497395833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="a6ca0c7f-378e-4492-a2ac-82a8721275fb" absoluteBounds="3.5, 2.875, 2, 1.0961531575520835">
-      <DataClassMoniker Name="/webservicewithrestDataContext/UsuarioComum" />
+    <classShape Id="0f3d77ad-c945-4333-afd3-c1983fcd2934" absoluteBounds="6.25, 1, 2, 1.4248478190104166">
+      <DataClassMoniker Name="/webservicewithrestDataContext/Tarefa" />
       <nestedChildShapes>
-        <elementListCompartment Id="b71b57fe-1776-444a-ba78-45ab734453bb" absoluteBounds="3.515, 3.335, 1.9700000000000002, 0.53615315755208326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="59a8b56c-ec18-489f-899e-a4c4eca59217" absoluteBounds="6.265, 1.46, 1.9700000000000002, 0.86484781901041674" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(5.5 : 5.46242390950521); (6.25 : 5.46242390950521)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/webservicewithrestDataContext/ListaTarefa/ListaTarefa_Tarefa" />
-      <nodes>
-        <classShapeMoniker Id="99992e3d-4b6d-47cf-bf49-0d666e9c3e97" />
-        <classShapeMoniker Id="97d6ea3f-b62a-420d-878c-a6420a61dd97" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(1.75 : 4.29984781901042); (1.75 : 5.46242390950521); (3.5 : 5.46242390950521)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 1.71242390950521); (3.5 : 1.71242390950521)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/webservicewithrestDataContext/Usuario/Usuario_ListaTarefa" />
       <nodes>
-        <classShapeMoniker Id="c8ec211b-3037-4635-9382-f4792edbbffa" />
-        <classShapeMoniker Id="99992e3d-4b6d-47cf-bf49-0d666e9c3e97" />
+        <classShapeMoniker Id="1dbff2f7-b878-4c92-bdaa-502d99b713e2" />
+        <classShapeMoniker Id="c5b60de4-c15d-4c11-848a-ffbd7f48b4a0" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(1.75 : 2.875); (1.75 : 1.67307657877604); (3.5 : 1.67307657877604)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/webservicewithrestDataContext/Usuario/Usuario_UsuarioFacebook" />
+    <associationConnector edgePoints="[(5.5 : 1.71242390950521); (6.25 : 1.71242390950521)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/webservicewithrestDataContext/ListaTarefa/ListaTarefa_Tarefa" />
       <nodes>
-        <classShapeMoniker Id="c8ec211b-3037-4635-9382-f4792edbbffa" />
-        <classShapeMoniker Id="f9535f22-559b-4a81-a1ba-ca961e16a99d" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 3.42307657877604); (3.5 : 3.42307657877604)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/webservicewithrestDataContext/Usuario/Usuario_UsuarioComum" />
-      <nodes>
-        <classShapeMoniker Id="c8ec211b-3037-4635-9382-f4792edbbffa" />
-        <classShapeMoniker Id="a6ca0c7f-378e-4492-a2ac-82a8721275fb" />
+        <classShapeMoniker Id="c5b60de4-c15d-4c11-848a-ffbd7f48b4a0" />
+        <classShapeMoniker Id="0f3d77ad-c945-4333-afd3-c1983fcd2934" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

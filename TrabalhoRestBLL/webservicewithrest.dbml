@@ -5,16 +5,19 @@
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Nome" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Cor" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="UsuarioId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UsuarioId" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Association Name="ListaTarefa_Tarefa" Member="Tarefas" ThisKey="Id" OtherKey="ListaTarefaId" Type="Tarefa" />
       <Association Name="Usuario_ListaTarefa" Member="Usuario" ThisKey="UsuarioId" OtherKey="Id" Type="Usuario" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.UsuarioFacebook" Member="UsuarioFacebooks">
-    <Type Name="UsuarioFacebook">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="UsuarioId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Usuario_UsuarioFacebook" Member="Usuario" ThisKey="UsuarioId" OtherKey="Id" Type="Usuario" IsForeignKey="true" />
+  <Table Name="dbo.Usuario" Member="Usuarios">
+    <Type Name="Usuario">
+      <Column Name="Id" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Senha" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Facebook" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="Usuario_ListaTarefa" Member="ListaTarefas" ThisKey="Id" OtherKey="UsuarioId" Type="ListaTarefa" />
     </Type>
   </Table>
   <Table Name="dbo.Tarefa" Member="Tarefas">
@@ -24,24 +27,6 @@
       <Column Name="Status" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
       <Column Name="ListaTarefaId" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="ListaTarefa_Tarefa" Member="ListaTarefa" ThisKey="ListaTarefaId" OtherKey="Id" Type="ListaTarefa" IsForeignKey="true" DeleteRule="CASCADE" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Usuario" Member="Usuarios">
-    <Type Name="Usuario">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Nome" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Senha" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Association Name="Usuario_ListaTarefa" Member="ListaTarefas" ThisKey="Id" OtherKey="UsuarioId" Type="ListaTarefa" />
-      <Association Name="Usuario_UsuarioFacebook" Member="UsuarioFacebooks" ThisKey="Id" OtherKey="UsuarioId" Type="UsuarioFacebook" />
-      <Association Name="Usuario_UsuarioComum" Member="UsuarioComums" ThisKey="Id" OtherKey="UsuarioId" Type="UsuarioComum" />
-    </Type>
-  </Table>
-  <Table Name="dbo.UsuarioComum" Member="UsuarioComums">
-    <Type Name="UsuarioComum">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="UsuarioId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Usuario_UsuarioComum" Member="Usuario" ThisKey="UsuarioId" OtherKey="Id" Type="Usuario" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

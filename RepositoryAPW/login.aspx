@@ -15,12 +15,14 @@
         <div class="container">
             <form class="form" runat="server">
                 <div id="login">
-                    <asp:Label ID="lblUsuario" runat="server" Text="Usuário"></asp:Label>
+                    <p><asp:Label ID="lblUsuario" runat="server" Text="Usuário"></asp:Label>
                     <asp:TextBox ID="tbUsuario" runat="server" required="true"></asp:TextBox>
                     <asp:Label ID="lblSenha" runat="server" Text="Senha"></asp:Label>
                     <asp:TextBox ID="tbSenha" runat="server" TextMode="Password" required="true"></asp:TextBox>
                     <br />
                     <asp:Button ID="btnLogar" runat="server" Text="Logar" OnClick="btnLogar_Click" />
+                    </p>
+                    <p><asp:HyperLink ID="hlLogarWithFacebook" runat="server"></asp:HyperLink></p>
                 </div>
             </form>
         </div>

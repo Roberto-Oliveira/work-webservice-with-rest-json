@@ -17,7 +17,14 @@ namespace RepositoryAPW.pages
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            gvDataBind();
+            if (Session["user"] == null)
+            {
+                Response.Redirect("authenticate.aspx");
+            }
+            else
+            {
+                gvDataBind();
+            }
         }
 
         private void gvDataBind()
@@ -59,7 +66,7 @@ namespace RepositoryAPW.pages
                 }
                 else
                 {
-                    ws.update_user(Convert.ToInt32(id), tbNome.Text, tbEmail.Text, tbSenha.Text);
+                    ws.update_user((int)id, tbNome.Text, tbEmail.Text, tbSenha.Text);
                     gvDataBind();
 
                     tbEmail.Enabled = true;
@@ -96,7 +103,7 @@ namespace RepositoryAPW.pages
                         var usuario = jss.Deserialize<Usuario[]>(dado);
 
                         Session["Id"] = usuario[0].Id;
-                        tbNome.Text = usuario[0].Nome;
+                        tbNome.Text = usuario[0].Name;
                         tbEmail.Text = usuario[0].Email;
                         tbSenha.Text = usuario[0].Senha;
 
@@ -124,6 +131,12 @@ namespace RepositoryAPW.pages
             lblMensagem.Visible = false;
             lblMensagem.Text = "";
             tbEmail.Enabled = true;
+            Session.Clear();
+        }
+
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("authenticate.aspx");
             Session.Clear();
         }
     }

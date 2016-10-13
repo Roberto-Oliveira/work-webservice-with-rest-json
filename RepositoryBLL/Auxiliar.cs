@@ -102,39 +102,27 @@ namespace RepositoryBLL
         }
 
 
-        public static void SendEmail(string quemEnviou, string quemRecebera)
+        public static void SendEmail(string quemEnviou, string quemRecebera, string body)
         {
-            #region // Corpo do email
-            const string email = "roberto.oliveira.engineer@gmail.com";
-            const string password = "rm121319";
-            #endregion
-            var body = "" + quemEnviou;
-
             try
             {
                 var mail = new MailMessage();
                 mail.To.Add(quemRecebera);
-                mail.From = new MailAddress(email);
+                mail.From = new MailAddress(quemEnviou);
                 mail.Subject = "Teste de envio de email via Webservice com rest.";
                 mail.Body = body;
                 mail.IsBodyHtml = true;
 
-                var client = new SmtpClient
-                {
-                    Host = "smtp.gmail.com",
-                    Credentials = new NetworkCredential(email, password),
-                    Port = 587,
-                    EnableSsl = true
-                };
+                var smtp = new SmtpClient();
 
-                client.Send(mail);
+                smtp.Send(mail);
             }
             catch (Exception ex)
             {
                 throw new Exception("Erro ao enviar o email: " + ex.Message);
             }
         }
-
+        
         /// <summary>
         /// Gera uma senha alfanumérica aleatória, contendo letras maiúsculas, minúsculas e números.
         /// </summary>

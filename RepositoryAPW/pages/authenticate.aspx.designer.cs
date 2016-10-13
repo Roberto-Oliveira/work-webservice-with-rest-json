@@ -7,37 +7,28 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace RepositoryAPW {
+namespace RepositoryAPW.pages {
     
     
-    public partial class login {
+    public partial class authenticate {
         
         /// <summary>
-        /// lblUsuario control.
+        /// form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblUsuario;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// tbUsuario control.
+        /// tbEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbUsuario;
-        
-        /// <summary>
-        /// lblSenha control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSenha;
+        protected global::System.Web.UI.WebControls.TextBox tbEmail;
         
         /// <summary>
         /// tbSenha control.
@@ -49,13 +40,13 @@ namespace RepositoryAPW {
         protected global::System.Web.UI.WebControls.TextBox tbSenha;
         
         /// <summary>
-        /// btnLogar control.
+        /// btnAuthenticate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnLogar;
+        protected global::System.Web.UI.WebControls.Button btnAuthenticate;
         
         /// <summary>
         /// hlLogarWithFacebook control.
@@ -65,5 +56,14 @@ namespace RepositoryAPW {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink hlLogarWithFacebook;
+        
+        /// <summary>
+        /// lblMensagem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMensagem;
     }
 }

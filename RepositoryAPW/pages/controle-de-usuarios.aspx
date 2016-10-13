@@ -22,6 +22,8 @@
         <i class="btn-floating btn-medium waves-effect waves-light red material-icons">
             <asp:Button ID="btnLimpar" runat="server" Text="clear" OnClick="btnLimpar_Click" ToolTip="Limpar Campos" />
         </i>
+        <p><asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click" Text="Sair"></asp:LinkButton></p>
+         
     </p>
     <hr />
     <br />
@@ -46,7 +48,7 @@
                         <asp:Label ID="lblId" runat="server" Text='<%# Bind("Id") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:BoundField DataField="Nome" HeaderText="Nome" SortExpression="Nome" />
+                <asp:BoundField DataField="Name" HeaderText="Nome" SortExpression="Name" />
                 <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
                 <asp:BoundField DataField="Senha" HeaderText="Senha" SortExpression="Senha" />
             </Columns>

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Linq;
+using System.Net.Mail;
+using System.Text;
 using System.Web.Script.Serialization;
 using System.Web.Script.Services;
 using System.Web.Services;
@@ -37,25 +39,26 @@ namespace TrabalhoRestAPW.webservices
         }
 
 
-       // [WebMethod(Description =
-       //  "<br/><p><b>Descrição:</b> Método para verificar se usuário do facebook já existe na base de dados.</p>" +
-       //  "<p><b>Parâmetros: </b><b>  Email</b>: tipo String</p>" +
-       //    "<ul>" +
-       //       "<p><b>Retorno: </b></p>" +
-       //          "<ul>" +
-       //             "<li><b>True ou False</b>: tipo Boolean" + "</li>" +
-       //          "</ul>" +
-       //    "</ul><br/>"
-       //)]
-       // [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-       // public bool check_user_facebook(string email)
-       // {
-       //     var verificador = (from u in dc.UsuarioFacebooks
-       //                        where u.email.Trim().Equals(email)
-       //                        select u).Count();
+        [WebMethod(Description =
+         "<br/><p><b>Descrição:</b> Método para verificar se usuário do facebook já existe na base de dados.</p>" +
+         "<p><b>Parâmetros: </b><b>  Email</b>: tipo String</p>" +
+           "<ul>" +
+              "<p><b>Retorno: </b></p>" +
+                 "<ul>" +
+                    "<li><b>True ou False</b>: tipo Boolean" + "</li>" +
+                 "</ul>" +
+           "</ul><br/>"
+       )]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public bool check_user_facebook(string email)
+        {
+            var verificador = (from u in dc.Usuarios
+                               where u.Email.Trim().Equals(email) &&
+                                     u.Facebook.Value
+                               select u).Count();
 
-       //     return verificador > 0;
-       // }
+            return verificador > 0;
+        }
 
 
         [WebMethod(Description =
@@ -119,7 +122,7 @@ namespace TrabalhoRestAPW.webservices
                    Select(u => new
                    {
                        u.Id,
-                       u.Nome,
+                       u.Name,
                        u.Email,
                        u.Senha
                    });
@@ -179,7 +182,7 @@ namespace TrabalhoRestAPW.webservices
                    Select(u => new
                    {
                        u.Id,
-                       u.Nome,
+                       u.Name,
                        u.Email,
                        u.Senha
                    });
@@ -212,7 +215,7 @@ namespace TrabalhoRestAPW.webservices
             {
                 var usuario = new Usuario
                 {
-                    Nome = nome,
+                    Name = nome,
                     Email = email,
                     Senha = senha
                 };
@@ -227,7 +230,7 @@ namespace TrabalhoRestAPW.webservices
 
         [WebMethod(Description =
          "<br/><p><b>Descrição:</b> Método de inserção de um novo usuário através de login do facebook.</p>" +
-         "<p><b>Parâmetros: </b><b>  Id</b>: tipo String, <b>Nome </b>: tipo String, <b>Email </b>: tipo String</p>" +
+         "<p><b>Parâmetros: </b><b>  Nome </b>: tipo String, <b>Email </b>: tipo String</p>" +
            "<ul>" +
               "<p><b>Retorno: </b></p>" +
                  "<ul>" +
@@ -236,7 +239,7 @@ namespace TrabalhoRestAPW.webservices
            "</ul><br/>"
        )]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public string create_user_facebook(string _id, string _nome, string _email)
+        public string create_user_facebook(string _nome, string _email)
         {
             if (check_user_facebook(_email))
             {
@@ -244,27 +247,24 @@ namespace TrabalhoRestAPW.webservices
             }
             else
             {
-                var usuarioFacebook = new UsuarioFacebook();
                 var usuario = new Usuario();
+                var pass = Auxiliar.gerarSenha(7);
 
-                usuario.Id = Convert.ToInt32(_id);
-                usuario.Nome = _nome;
+                usuario.Name = _nome;
                 usuario.Email = _email;
+                usuario.Senha = pass;
+                usuario.Facebook = true;
 
-                usuario.u
-                
-
-
-                dc.FacebookUsers.InsertOnSubmit(usuario);
+                dc.Usuarios.InsertOnSubmit(usuario);
                 dc.SubmitChanges();
+
+                Auxiliar.SendEmail("robertocoliveira@gmail.com", "robertocoliveira@gmail.com", "Segue sua nova senha: " + pass);
 
                 mensagem = "Usuário cadastrado com sucesso.";
             }
             return mensagem;
         }
-
-
-
+        
         [WebMethod(Description =
          "<br/><p><b>Descrição:</b> Método de atualização de um usuário.</p>" +
          "<p><b>Parâmetros: </b><b>   Id</b>: tipo String, <b>Nome</b>: tipo String, <b>Email </b>: tipo String, <b>Senha </b>: tipo String</p>" +
@@ -279,7 +279,7 @@ namespace TrabalhoRestAPW.webservices
         {
             var usuario = dc.Usuarios.SingleOrDefault(u => u.Id == id);
 
-            usuario.Nome = nome;
+            usuario.Name = nome;
             usuario.Email = email;
             usuario.Senha = senha;
 
@@ -322,11 +322,11 @@ namespace TrabalhoRestAPW.webservices
            "</ul><br/>"
         )]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public string create_task_list(string UsuarioId, string nome, string cor)
+        public string create_task_list(int UsuarioId, string nome, string cor)
         {
             var lTarefa = new ListaTarefa
             {
-                UsuarioId = int.Parse(UsuarioId),
+                UsuarioId = UsuarioId,
                 Nome = nome,
                 Cor = cor
             };
@@ -454,7 +454,7 @@ namespace TrabalhoRestAPW.webservices
                     Select(u => new
                     {
                         u.Id,
-                        u.Nome,
+                        u.Name,
                         u.Email,
                         u.Senha
                     });
@@ -487,13 +487,12 @@ namespace TrabalhoRestAPW.webservices
                 {
                     var usuario = ObterUsuario(email);
                     var senha = Auxiliar.gerarSenha(7);
+                    var body = "Webservice lhe enviou uma nova senha: " + senha;
 
                     usuario.Senha = senha;
                     dc.SubmitChanges();
 
-                    mensagem = "Webservice lhe enviou uma nova senha: " + senha;
-
-                    Auxiliar.SendEmail(mensagem, email);
+                    //   Auxiliar.SendEmail("teste@teste.com.br", email, body);
                 }
                 else
                 {
