@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Linq;
-using System.Net.Mail;
-using System.Text;
 using System.Web.Script.Serialization;
 using System.Web.Script.Services;
 using System.Web.Services;
@@ -10,11 +8,12 @@ using TrabalhoRestBLL;
 
 namespace TrabalhoRestAPW.webservices
 {
-    [WebService(Namespace = "roberto-oliveira")]
+    [WebService(Namespace = "work-webservice-with-rest-json")]
     [ScriptService]
     public class webservicewithrest : System.Web.Services.WebService
     {
         private static readonly webservicewithrestDataContext dc = new webservicewithrestDataContext();
+        private static readonly JavaScriptSerializer jss = new JavaScriptSerializer();
         private static string mensagem { get; set; }
 
 
@@ -62,8 +61,8 @@ namespace TrabalhoRestAPW.webservices
 
 
         [WebMethod(Description =
-         "<br/><p><b>Descrição:</b> Método para verificar se usuário já existe na base de dados.</p>" +
-         "<p><b>Parâmetros: </b><b>  Email</b>: tipo String</p>" +
+         "<br/><p><b>Descrição:</b> Método para validar usuário na base de dados.</p>" +
+         "<p><b>Parâmetros: </b><b>  Email</b>: tipo String, <b>Senha</b>: tipo String</p>" +
            "<ul>" +
               "<p><b>Retorno: </b></p>" +
                  "<ul>" +
@@ -80,26 +79,6 @@ namespace TrabalhoRestAPW.webservices
                                select u).Count();
 
             return verificador > 0;
-        }
-
-        [WebMethod(Description =
-         "<br/><p><b>Descrição:</b> Método para verificar se usuário através do email.</p>" +
-         "<p><b>Parâmetros: </b><b>  Email</b>: tipo String</p>" +
-           "<ul>" +
-              "<p><b>Retorno: </b></p>" +
-                 "<ul>" +
-                    "<li><b>True ou False</b>: tipo Boolean" + "</li>" +
-                 "</ul>" +
-           "</ul><br/>"
-        )]
-        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public bool check_user_by_email(string email)
-        {
-            var usuario = (from u in dc.Usuarios
-                           where u.Email.Trim().Equals(email)
-                           select u).Count();
-
-            return usuario > 0;
         }
 
         [WebMethod(Description =
@@ -127,8 +106,6 @@ namespace TrabalhoRestAPW.webservices
                        u.Senha
                    });
 
-            var jss = new JavaScriptSerializer();
-
             var json = jss.Serialize(usuario);
 
             return json;
@@ -149,12 +126,17 @@ namespace TrabalhoRestAPW.webservices
         )]
         public string return_user_by_email(string email)
         {
-            var usuario = from result in dc.Usuarios
-                          where result.Email == email
-                          select result;
-
-            var jss = new JavaScriptSerializer();
-
+            var usuario = dc.Usuarios.
+                   Where(u => u.Email == email).
+                   Select(u => new
+                   {
+                       u.Id,
+                       u.Name,
+                       u.Email,
+                       u.Senha,
+                       u.Facebook
+                   });
+            
             var json = jss.Serialize(usuario);
 
             return json;
@@ -187,7 +169,6 @@ namespace TrabalhoRestAPW.webservices
                        u.Senha
                    });
 
-            var jss = new JavaScriptSerializer();
             var json = jss.Serialize(lista);
 
             return json;
@@ -459,8 +440,6 @@ namespace TrabalhoRestAPW.webservices
                         u.Senha
                     });
 
-                var jss = new JavaScriptSerializer();
-
                 var json = jss.Serialize(usuario);
 
                 return json;
@@ -475,7 +454,7 @@ namespace TrabalhoRestAPW.webservices
           "<ul>" +
              "<p><b>Retorno: </b></p>" +
                 "<ul>" +
-                   "<li><b>Mensagem</b>: Retorna o usuário." + "</li>" +
+                   "<li><b>Mensagem</b>: Retorna mensagem de confirmação ao usuário." + "</li>" +
                 "</ul>" +
           "</ul><br/>"
        )]
@@ -483,7 +462,7 @@ namespace TrabalhoRestAPW.webservices
         {
             try
             {
-                if (check_user_by_email(email))
+                if (check_user(email))
                 {
                     var usuario = ObterUsuario(email);
                     var senha = Auxiliar.gerarSenha(7);
@@ -492,7 +471,9 @@ namespace TrabalhoRestAPW.webservices
                     usuario.Senha = senha;
                     dc.SubmitChanges();
 
-                    //   Auxiliar.SendEmail("teste@teste.com.br", email, body);
+                    Auxiliar.SendEmail("teste@teste.com.br", email, body);
+
+                    mensagem = "Senha atualizada com sucesso. Verifique seu email.";
                 }
                 else
                 {
