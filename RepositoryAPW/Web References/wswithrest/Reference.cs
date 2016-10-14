@@ -18,7 +18,6 @@ namespace RepositoryAPW.wswithrest {
     using System.Web.Services;
     using System.Diagnostics;
     using System.Web.Services.Protocols;
-    using System.Xml.Serialization;
     using System.ComponentModel;
     
     

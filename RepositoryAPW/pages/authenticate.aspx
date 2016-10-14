@@ -10,8 +10,8 @@
     <form id="form1" runat="server">
         <div>
             <p>
-                <asp:TextBox ID="tbEmail" runat="server" TextMode="Email" Width="250px"></asp:TextBox><br />
-                <asp:TextBox ID="tbSenha" runat="server" TextMode="Password" Width="200px"></asp:TextBox><br />
+                <asp:TextBox ID="tbEmail" runat="server" TextMode="Email" Width="250px" required="true"></asp:TextBox><br />
+                <asp:TextBox ID="tbSenha" runat="server" TextMode="Password" Width="200px" required="true"></asp:TextBox><br />
                 <br />
                 <asp:Button ID="btnAuthenticate" runat="server" Text="Autenticar" OnClick="btnAuthenticate_Click" />
             </p>

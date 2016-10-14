@@ -16,7 +16,6 @@ namespace TrabalhoRestAPW.webservices
         private static readonly JavaScriptSerializer jss = new JavaScriptSerializer();
         private static string mensagem { get; set; }
 
-
         [WebMethod(Description =
           "<br/><p><b>Descrição:</b> Método para verificar se usuário já existe na base de dados.</p>" +
           "<p><b>Parâmetros: </b><b>  Email</b>: tipo String</p>" +
@@ -136,7 +135,7 @@ namespace TrabalhoRestAPW.webservices
                        u.Senha,
                        u.Facebook
                    });
-            
+
             var json = jss.Serialize(usuario);
 
             return json;
@@ -168,6 +167,86 @@ namespace TrabalhoRestAPW.webservices
                        u.Email,
                        u.Senha
                    });
+
+            var json = jss.Serialize(lista);
+
+            return json;
+        }
+
+
+        [WebMethod(Description =
+          "<br/><p><b>Descrição:</b> Método retorna lista das listas de tarefas por usuario</p>" +
+          "<p><b>Parâmetros: </b><b>  Id do usuário</b>: Tipo: int</p>" +
+            "<ul>" +
+               "<p><b>Retorno: </b></p>" +
+                  "<ul>" +
+                     "<li><b>Lista</b>: tipo List<>" + "</li>" +
+                  "</ul>" +
+            "</ul><br/>"
+        )]
+        public string task_of_task_lists(int id)
+        {
+            var lista = dc.ListaTarefas.
+                Where(lt => lt.UsuarioId == id).
+                Select(lt => new
+                {
+                    lt.Nome,
+                    lt.Cor
+                });
+
+            var json = jss.Serialize(lista);
+
+            return json;
+        }
+
+
+        [WebMethod(Description =
+         "<br/><p><b>Descrição:</b> Método retorna lista de tarefas por usuario</p>" +
+         "<p><b>Parâmetros: </b><b>  Id da lista das listas de tarefas</b>: Tipo: int</p>" +
+           "<ul>" +
+              "<p><b>Retorno: </b></p>" +
+                 "<ul>" +
+                    "<li><b>Lista</b>: tipo List<>" + "</li>" +
+                 "</ul>" +
+           "</ul><br/>"
+       )]
+        public string task_lists(int id)
+        {
+            var lista = dc.Tarefas.
+                Where(l => l.ListaTarefaId == id).
+                Select(l => new
+                {
+                    l.Descricao,
+                    l.Status
+                });
+
+            var json = jss.Serialize(lista);
+
+            return json;
+        }
+
+
+        [WebMethod(Description =
+         "<br/><p><b>Descrição:</b> Método retorna lista de usuários facebook</p>" +
+         "<p><b>Parâmetros: </b><b>  No parameters</b>: No type</p>" +
+           "<ul>" +
+              "<p><b>Retorno: </b></p>" +
+                 "<ul>" +
+                    "<li><b>List<Usuario></b>: tipo List<>" + "</li>" +
+                 "</ul>" +
+           "</ul><br/>"
+       )]
+        public string return_list_users_facebook()
+        {
+            var lista = dc.Usuarios.
+                Where(u => u.Facebook.Value).
+                Select(u => new
+                {
+                    u.Id,
+                    u.Name,
+                    u.Email,
+                    u.Senha
+                });
 
             var json = jss.Serialize(lista);
 
@@ -245,7 +324,7 @@ namespace TrabalhoRestAPW.webservices
             }
             return mensagem;
         }
-        
+
         [WebMethod(Description =
          "<br/><p><b>Descrição:</b> Método de atualização de um usuário.</p>" +
          "<p><b>Parâmetros: </b><b>   Id</b>: tipo String, <b>Nome</b>: tipo String, <b>Email </b>: tipo String, <b>Senha </b>: tipo String</p>" +
